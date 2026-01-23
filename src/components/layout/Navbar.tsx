@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Home", path: "/" },
   { name: "Products", path: "/products" },
+  { name: "Pricing", path: "/pricing" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];
@@ -18,37 +18,30 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isActive = (path: string) => {
-    if (path === "/") {
-      return location.pathname === "/";
-    }
+    if (path === "/") return location.pathname === "/";
     return location.pathname.startsWith(path);
   };
 
   return (
     <header className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
       scrolled 
-        ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm" 
+        ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm" 
         : "bg-transparent"
     )}>
-      <div className="container flex h-20 items-center justify-between container-padding">
+      <div className="container flex h-16 items-center justify-between container-padding">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-            <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 shadow-lg group-hover:shadow-xl transition-all duration-300">
-              <span className="text-lg font-black text-white">KC</span>
-            </div>
+        <Link to="/" className="flex items-center gap-2.5">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
+            <span className="text-sm font-bold text-white">KC</span>
           </div>
-          <span className="hidden text-xl font-bold text-foreground sm:inline-block">
+          <span className="text-lg font-semibold text-foreground hidden sm:block">
             KC Technologies
           </span>
         </Link>
@@ -60,26 +53,26 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={cn(
-                "relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
+                "px-4 py-2 text-sm font-medium rounded-lg transition-colors",
                 isActive(link.path)
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-primary bg-primary/5"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               )}
             >
-              {isActive(link.path) && (
-                <span className="absolute inset-0 bg-primary/10 rounded-full animate-scale-in" />
-              )}
-              <span className="relative">{link.name}</span>
+              {link.name}
             </Link>
           ))}
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-4">
-          <Button asChild className="btn-premium rounded-full gap-2 px-6">
+        <div className="hidden md:flex items-center gap-3">
+          <Button asChild variant="ghost" size="sm">
+            <Link to="/contact">Contact Sales</Link>
+          </Button>
+          <Button asChild size="sm" className="rounded-lg">
             <Link to="/contact">
-              <span className="relative z-10">Get Started</span>
-              <ArrowRight className="h-4 w-4 relative z-10" />
+              Get Started
+              <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
             </Link>
           </Button>
         </div>
@@ -87,49 +80,47 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" className="rounded-full">
+            <Button variant="ghost" size="icon">
               <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-full sm:w-[400px] p-0">
-            <div className="flex flex-col h-full bg-background">
-              {/* Mobile header */}
-              <div className="flex items-center justify-between p-6 border-b">
-                <Link to="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80">
-                    <span className="text-lg font-black text-white">KC</span>
+          <SheetContent side="right" className="w-[300px] p-0">
+            <div className="flex flex-col h-full">
+              <div className="p-6 border-b">
+                <Link to="/" className="flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
+                    <span className="text-sm font-bold text-white">KC</span>
                   </div>
-                  <span className="text-lg font-bold">KC Technologies</span>
+                  <span className="text-lg font-semibold">KC Technologies</span>
                 </Link>
               </div>
 
-              {/* Mobile nav links */}
-              <nav className="flex-1 p-6 space-y-2">
-                {navLinks.map((link, index) => (
+              <nav className="flex-1 p-4 space-y-1">
+                {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "flex items-center gap-4 p-4 rounded-2xl text-lg font-medium transition-all duration-300 animate-fade-up",
+                      "flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                       isActive(link.path)
                         ? "bg-primary/10 text-primary"
-                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
                     )}
-                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {link.name}
                   </Link>
                 ))}
               </nav>
 
-              {/* Mobile CTA */}
-              <div className="p-6 border-t">
-                <Button asChild className="w-full btn-premium rounded-full gap-2 py-6 text-lg">
+              <div className="p-4 border-t space-y-2">
+                <Button asChild variant="outline" className="w-full">
+                  <Link to="/contact" onClick={() => setIsOpen(false)}>Contact Sales</Link>
+                </Button>
+                <Button asChild className="w-full">
                   <Link to="/contact" onClick={() => setIsOpen(false)}>
-                    <span className="relative z-10">Get Started</span>
-                    <ArrowRight className="h-5 w-5 relative z-10" />
+                    Get Started
+                    <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                   </Link>
                 </Button>
               </div>

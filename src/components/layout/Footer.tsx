@@ -1,39 +1,30 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-navy text-navy-foreground overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px]" />
-      </div>
-
-      <div className="container relative section-padding container-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+    <footer className="bg-foreground text-background">
+      <div className="container section-padding container-padding">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Company Info */}
-          <div className="lg:col-span-1 space-y-6">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 shadow-lg">
-                <span className="text-lg font-black text-white">KC</span>
+          <div className="col-span-2 lg:col-span-2 space-y-4">
+            <Link to="/" className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
+                <span className="text-sm font-bold text-white">KC</span>
               </div>
-              <span className="text-xl font-bold">KC Technologies</span>
+              <span className="text-lg font-semibold">KC Technologies</span>
             </Link>
-            <p className="text-navy-foreground/70 leading-relaxed">
-              Building innovative software solutions that empower businesses to grow and succeed in the digital age.
+            <p className="text-background/70 text-sm leading-relaxed max-w-xs">
+              Building innovative software solutions that empower businesses to grow and succeed.
             </p>
             <div className="flex gap-3">
-              {[
-                { icon: Linkedin, href: "#" },
-                { icon: Twitter, href: "#" },
-                { icon: Github, href: "#" }
-              ].map(({ icon: Icon, href }, i) => (
+              {[Linkedin, Twitter, Github].map((Icon, i) => (
                 <a 
                   key={i}
-                  href={href} 
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-navy-foreground/60 hover:bg-primary hover:text-white transition-all duration-300"
+                  href="#" 
+                  className="w-9 h-9 rounded-lg bg-background/10 flex items-center justify-center text-background/60 hover:bg-primary hover:text-white transition-colors"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -41,86 +32,73 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-bold">Quick Links</h4>
-            <nav className="flex flex-col gap-3">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Products", path: "/products" },
-                { name: "About Us", path: "/about" },
-                { name: "Contact", path: "/contact" }
-              ].map((link) => (
+          {/* Products */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold">Products</h4>
+            <nav className="flex flex-col gap-2.5">
+              {["Analytics Pro", "Workflow Hub", "Pricing", "All Products"].map((item) => (
                 <Link 
-                  key={link.path}
-                  to={link.path} 
-                  className="text-navy-foreground/70 hover:text-primary transition-colors inline-flex items-center gap-2 group"
+                  key={item}
+                  to={item === "Pricing" ? "/pricing" : "/products"} 
+                  className="text-sm text-background/70 hover:text-primary transition-colors"
                 >
-                  <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                  {link.name}
+                  {item}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-bold">Contact Us</h4>
-            <div className="space-y-4">
+          {/* Company */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold">Company</h4>
+            <nav className="flex flex-col gap-2.5">
               {[
-                { icon: Mail, text: "hello@kctechnologies.com", href: "mailto:hello@kctechnologies.com" },
-                { icon: Phone, text: "+1 (234) 567-890", href: "tel:+1234567890" },
-                { icon: MapPin, text: "123 Innovation Street\nTech City, TC 12345", href: null }
-              ].map(({ icon: Icon, text, href }, i) => (
-                href ? (
-                  <a 
-                    key={i}
-                    href={href} 
-                    className="flex items-start gap-3 text-navy-foreground/70 hover:text-primary transition-colors"
-                  >
-                    <Icon className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                    <span className="whitespace-pre-line">{text}</span>
-                  </a>
-                ) : (
-                  <div key={i} className="flex items-start gap-3 text-navy-foreground/70">
-                    <Icon className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                    <span className="whitespace-pre-line">{text}</span>
-                  </div>
-                )
+                { name: "About", path: "/about" },
+                { name: "Contact", path: "/contact" },
+                { name: "Careers", path: "/about" },
+                { name: "Blog", path: "/about" }
+              ].map((item) => (
+                <Link 
+                  key={item.name}
+                  to={item.path} 
+                  className="text-sm text-background/70 hover:text-primary transition-colors"
+                >
+                  {item.name}
+                </Link>
               ))}
-            </div>
+            </nav>
           </div>
 
           {/* Newsletter */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-bold">Stay Updated</h4>
-            <p className="text-navy-foreground/70">
-              Subscribe to our newsletter for the latest updates and insights.
+          <div className="col-span-2 md:col-span-1 space-y-4">
+            <h4 className="text-sm font-semibold">Stay Updated</h4>
+            <p className="text-sm text-background/70">
+              Subscribe for updates and insights.
             </p>
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
               <Input
                 type="email"
-                placeholder="Enter your email"
-                className="bg-white/10 border-white/20 text-navy-foreground placeholder:text-navy-foreground/50 rounded-full px-5 focus:border-primary focus:ring-primary"
+                placeholder="Email"
+                className="bg-background/10 border-background/20 text-background placeholder:text-background/50 h-9 text-sm"
               />
-              <Button type="submit" className="w-full btn-premium rounded-full">
-                <span className="relative z-10">Subscribe</span>
+              <Button type="submit" size="sm" className="h-9 px-4">
+                Subscribe
               </Button>
             </form>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-white/10">
+        <div className="mt-12 pt-8 border-t border-background/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-navy-foreground/50">
+            <p className="text-xs text-background/50">
               © {new Date().getFullYear()} KC Technologies. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-sm text-navy-foreground/50 hover:text-primary transition-colors">
+              <a href="#" className="text-xs text-background/50 hover:text-primary transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm text-navy-foreground/50 hover:text-primary transition-colors">
+              <a href="#" className="text-xs text-background/50 hover:text-primary transition-colors">
                 Terms of Service
               </a>
             </div>
