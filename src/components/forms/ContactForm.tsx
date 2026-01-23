@@ -2,10 +2,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
+import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import {
   Form,
   FormControl,
@@ -43,7 +43,6 @@ const ContactForm = () => {
   });
 
   const onSubmit = (data: ContactFormData) => {
-    // In a real app, this would send the data to your backend
     toast.success("Message sent successfully!", {
       description: "We'll get back to you within 24 hours.",
     });
@@ -53,15 +52,19 @@ const ContactForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-6">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel className="text-base font-semibold">Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} />
+                  <Input 
+                    placeholder="John Doe" 
+                    className="h-12 rounded-xl border-border/50 focus:border-primary bg-background/50"
+                    {...field} 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -72,9 +75,14 @@ const ContactForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-base font-semibold">Email</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="john@example.com" {...field} />
+                  <Input 
+                    type="email" 
+                    placeholder="john@example.com" 
+                    className="h-12 rounded-xl border-border/50 focus:border-primary bg-background/50"
+                    {...field} 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -87,19 +95,19 @@ const ContactForm = () => {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel className="text-base font-semibold">Subject</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-12 rounded-xl border-border/50 focus:border-primary bg-background/50">
                     <SelectValue placeholder="What can we help you with?" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value="general">General Inquiry</SelectItem>
-                  <SelectItem value="product">Product Information</SelectItem>
-                  <SelectItem value="support">Technical Support</SelectItem>
-                  <SelectItem value="partnership">Partnership Opportunity</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
+                <SelectContent className="rounded-xl bg-card border-border/50">
+                  <SelectItem value="general" className="rounded-lg">General Inquiry</SelectItem>
+                  <SelectItem value="product" className="rounded-lg">Product Information</SelectItem>
+                  <SelectItem value="support" className="rounded-lg">Technical Support</SelectItem>
+                  <SelectItem value="partnership" className="rounded-lg">Partnership Opportunity</SelectItem>
+                  <SelectItem value="other" className="rounded-lg">Other</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -112,11 +120,12 @@ const ContactForm = () => {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel className="text-base font-semibold">Message</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Tell us how we can help..."
                   rows={5}
+                  className="rounded-xl border-border/50 focus:border-primary bg-background/50 resize-none"
                   {...field}
                 />
               </FormControl>
@@ -125,8 +134,9 @@ const ContactForm = () => {
           )}
         />
 
-        <Button type="submit" size="lg" className="w-full sm:w-auto">
-          Send Message
+        <Button type="submit" size="lg" className="btn-premium rounded-full gap-3 text-lg px-8 py-6">
+          <span className="relative z-10">Send Message</span>
+          <Send className="h-5 w-5 relative z-10" />
         </Button>
       </form>
     </Form>
