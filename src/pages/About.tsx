@@ -1,4 +1,4 @@
-import { Target, Eye, Heart, Sparkles } from "lucide-react";
+import { Target, Eye, Heart, Sparkles, Zap, Users } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import TeamMemberCard from "@/components/cards/TeamMemberCard";
 import CTASection from "@/components/sections/CTASection";
@@ -8,22 +8,26 @@ const values = [
   {
     icon: Sparkles,
     title: "Innovation",
-    description: "We push boundaries and embrace new ideas to create solutions that make a real difference."
+    description: "We push boundaries and embrace new ideas to create solutions that make a real difference.",
+    gradient: "from-yellow-500 to-orange-500"
   },
   {
     icon: Heart,
     title: "Integrity",
-    description: "We build trust through transparency, honesty, and doing what's right for our customers."
+    description: "We build trust through transparency, honesty, and doing what's right for our customers.",
+    gradient: "from-pink-500 to-rose-500"
   },
   {
     icon: Target,
     title: "Excellence",
-    description: "We strive for the highest quality in everything we do, from code to customer service."
+    description: "We strive for the highest quality in everything we do, from code to customer service.",
+    gradient: "from-blue-500 to-cyan-500"
   },
   {
     icon: Eye,
     title: "Vision",
-    description: "We think long-term, building sustainable solutions that grow with our customers."
+    description: "We think long-term, building sustainable solutions that grow with our customers.",
+    gradient: "from-purple-500 to-violet-500"
   }
 ];
 
@@ -61,18 +65,25 @@ const About = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-secondary/30 to-background py-16 md:py-24">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden pt-20 noise">
+        {/* Background orbs */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 -left-20 w-60 h-60 bg-accent/10 rounded-full blur-3xl" />
+          <div className="orb orb-primary w-[600px] h-[600px] -top-40 right-0" />
+          <div className="orb orb-accent w-[400px] h-[400px] bottom-0 -left-40" />
         </div>
 
-        <div className="container relative container-padding">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6 animate-fade-up">
-              About KC Technologies
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.5)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.5)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_20%,transparent_100%)]" />
+
+        <div className="container relative container-padding py-16">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-up">
+              Our Story
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 animate-fade-up delay-100">
+              About <span className="text-gradient">KC Technologies</span>
             </h1>
-            <p className="text-xl text-muted-foreground animate-fade-up" style={{ animationDelay: "0.1s" }}>
+            <p className="text-xl sm:text-2xl text-muted-foreground animate-fade-up delay-200 max-w-3xl mx-auto">
               We're a passionate team building innovative software solutions that help 
               businesses grow, automate, and succeed in the digital age.
             </p>
@@ -83,10 +94,13 @@ const About = () => {
       {/* Story Section */}
       <section className="section-padding">
         <div className="container container-padding">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Story</h2>
-              <div className="space-y-4 text-muted-foreground">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-up">
+                Who We Are
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-8 animate-fade-up delay-100">Our Story</h2>
+              <div className="space-y-6 text-lg text-muted-foreground animate-fade-up delay-200">
                 <p>
                   KC Technologies started with a simple observation: businesses spend too 
                   much time wrestling with complicated software instead of focusing on what 
@@ -95,8 +109,7 @@ const About = () => {
                 <p>
                   We set out to change that. Our mission is to create powerful, intuitive 
                   tools that feel like they were built specifically for you—because in many 
-                  ways, they are. We listen to our customers, understand their challenges, 
-                  and build solutions that truly make a difference.
+                  ways, they are.
                 </p>
                 <p>
                   Today, we're proud to help businesses of all sizes streamline their 
@@ -106,49 +119,52 @@ const About = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-primary/10 rounded-2xl p-6 text-center">
-                <div className="text-4xl font-bold text-primary mb-2">100+</div>
-                <div className="text-sm text-muted-foreground">Happy Customers</div>
-              </div>
-              <div className="bg-accent/10 rounded-2xl p-6 text-center">
-                <div className="text-4xl font-bold text-accent mb-2">2</div>
-                <div className="text-sm text-muted-foreground">Products Launched</div>
-              </div>
-              <div className="bg-secondary rounded-2xl p-6 text-center">
-                <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-                <div className="text-sm text-muted-foreground">Support Available</div>
-              </div>
-              <div className="bg-primary/10 rounded-2xl p-6 text-center">
-                <div className="text-4xl font-bold text-primary mb-2">99.9%</div>
-                <div className="text-sm text-muted-foreground">Uptime Guarantee</div>
-              </div>
+            <div className="grid grid-cols-2 gap-4 animate-fade-up delay-300">
+              {[
+                { value: "100+", label: "Happy Customers", gradient: "from-blue-500 to-cyan-500" },
+                { value: "2", label: "Products Launched", gradient: "from-orange-500 to-amber-500" },
+                { value: "24/7", label: "Support Available", gradient: "from-purple-500 to-pink-500" },
+                { value: "99.9%", label: "Uptime Guarantee", gradient: "from-green-500 to-emerald-500" }
+              ].map((stat, i) => (
+                <div 
+                  key={stat.label}
+                  className="glass-card rounded-3xl p-6 text-center hover-lift transition-all duration-500"
+                  style={{ animationDelay: `${400 + i * 100}ms` }}
+                >
+                  <div className={cn("text-4xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-br", stat.gradient)}>
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container container-padding">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-card rounded-2xl p-8 border border-border/50">
-              <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                <Target className="h-6 w-6 text-primary" />
-                Our Mission
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
+      <section className="section-padding bg-secondary/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-[size:6rem_6rem]" />
+
+        <div className="container container-padding relative">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="glass-card rounded-3xl p-10 hover-lift animate-fade-up">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white mb-6">
+                <Target className="h-7 w-7" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
                 To empower businesses with innovative, accessible software solutions 
                 that simplify complex processes, unlock new insights, and drive 
                 sustainable growth.
               </p>
             </div>
-            <div className="bg-card rounded-2xl p-8 border border-border/50">
-              <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                <Eye className="h-6 w-6 text-primary" />
-                Our Vision
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="glass-card rounded-3xl p-10 hover-lift animate-fade-up delay-100">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 text-white mb-6">
+                <Eye className="h-7 w-7" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
                 To become the trusted technology partner for businesses worldwide, 
                 known for creating tools that people actually love to use and that 
                 deliver real, measurable results.
@@ -161,31 +177,54 @@ const About = () => {
       {/* Values Section */}
       <section className="section-padding">
         <div className="container container-padding">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Values</h2>
-            <p className="text-lg text-muted-foreground">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-up">
+              What We Believe
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 animate-fade-up delay-100">
+              Our <span className="text-gradient">Values</span>
+            </h2>
+            <p className="text-xl text-muted-foreground animate-fade-up delay-200">
               The principles that guide everything we do.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
                 <div
                   key={value.title}
                   className={cn(
-                    "relative p-6 rounded-xl bg-card border border-border/50",
-                    "hover-lift transition-all duration-300",
+                    "group relative p-8 rounded-3xl",
+                    "bg-card border border-border/50",
+                    "hover-lift transition-all duration-500",
                     "animate-fade-up"
                   )}
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  style={{ animationDelay: `${300 + index * 100}ms` }}
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4">
-                    <Icon className="h-6 w-6" />
+                  <div className={cn(
+                    "absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500",
+                    "bg-gradient-to-br",
+                    value.gradient
+                  )} />
+                  <div className="relative mb-6">
+                    <div className={cn(
+                      "absolute inset-0 rounded-xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity",
+                      "bg-gradient-to-br",
+                      value.gradient
+                    )} />
+                    <div className={cn(
+                      "relative inline-flex items-center justify-center w-14 h-14 rounded-xl",
+                      "bg-gradient-to-br",
+                      value.gradient,
+                      "text-white shadow-lg"
+                    )}>
+                      <Icon className="h-7 w-7" />
+                    </div>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{value.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -196,11 +235,18 @@ const About = () => {
       </section>
 
       {/* Journey Timeline */}
-      <section className="section-padding bg-secondary/30">
-        <div className="container container-padding">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Journey</h2>
-            <p className="text-lg text-muted-foreground">
+      <section className="section-padding bg-secondary/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-[size:6rem_6rem]" />
+
+        <div className="container container-padding relative">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-up">
+              Timeline
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 animate-fade-up delay-100">
+              Our <span className="text-gradient">Journey</span>
+            </h2>
+            <p className="text-xl text-muted-foreground animate-fade-up delay-200">
               The milestones that have shaped KC Technologies.
             </p>
           </div>
@@ -208,25 +254,25 @@ const About = () => {
           <div className="max-w-3xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border" />
+              <div className="absolute left-10 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/20" />
 
               {milestones.map((milestone, index) => (
                 <div
                   key={index}
                   className={cn(
-                    "relative flex gap-6 pb-12 last:pb-0",
+                    "relative flex gap-8 pb-12 last:pb-0",
                     "animate-fade-up"
                   )}
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  style={{ animationDelay: `${300 + index * 100}ms` }}
                 >
                   {/* Dot */}
-                  <div className="relative z-10 flex-shrink-0 w-16 h-16 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
+                  <div className="relative z-10 flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg shadow-lg">
                     {milestone.year}
                   </div>
 
                   {/* Content */}
-                  <div className="bg-card rounded-xl p-6 border border-border/50 flex-1">
-                    <h3 className="font-semibold text-lg mb-2">{milestone.title}</h3>
+                  <div className="glass-card rounded-2xl p-6 flex-1">
+                    <h3 className="font-bold text-xl mb-2">{milestone.title}</h3>
                     <p className="text-muted-foreground">{milestone.description}</p>
                   </div>
                 </div>
@@ -239,14 +285,19 @@ const About = () => {
       {/* Team Section */}
       <section className="section-padding">
         <div className="container container-padding">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet the Team</h2>
-            <p className="text-lg text-muted-foreground">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-up">
+              The People
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 animate-fade-up delay-100">
+              Meet the <span className="text-gradient">Team</span>
+            </h2>
+            <p className="text-xl text-muted-foreground animate-fade-up delay-200">
               The passionate people behind KC Technologies.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {team.map((member, index) => (
               <TeamMemberCard
                 key={member.name}
