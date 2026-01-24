@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import ProductCard from "@/components/cards/ProductCard";
 import CTASection from "@/components/sections/CTASection";
 import { products } from "@/data/products";
+import { Button } from "@/components/ui/button";
 
 const Products = () => {
   return (
@@ -13,15 +16,24 @@ const Products = () => {
         <div className="container container-padding relative">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 animate-fade-up">
-              Our Products
+              My Products
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold mb-6 animate-fade-up delay-75">
-              Powerful tools for modern teams
+              Software I've built
             </h1>
             <p className="text-lg text-muted-foreground animate-fade-up delay-150 max-w-2xl">
-              Discover our suite of innovative solutions designed to help your business 
-              grow, automate, and succeed.
+              These are the products I've created under KC Technologies. Each one solves 
+              a real problem and is built with care and attention to detail.
             </p>
+            
+            <div className="flex gap-4 mt-8 animate-fade-up delay-200">
+              <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
+                <Link to="/services">
+                  Need something custom?
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -42,13 +54,42 @@ const Products = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              More products coming soon
+              More products in development
             </div>
           </div>
         </div>
       </section>
 
-      <CTASection />
+      {/* Services CTA */}
+      <section className="pb-20">
+        <div className="container container-padding">
+          <div className="max-w-4xl mx-auto bg-muted/30 rounded-2xl p-8 md:p-12 border border-border text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Have a project idea?</h2>
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Beyond my own products, I also work on client projects. If you have an idea 
+              you want to bring to life, let's talk about how I can help.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild size="lg" className="h-12 px-8 rounded-lg">
+                <Link to="/services">
+                  View Services
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
+                <Link to="/contact">Get in Touch</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CTASection 
+        title="Want to collaborate?"
+        description="I'm always open to interesting projects and partnerships."
+        primaryAction={{ text: "Let's Talk", href: "/contact" }}
+        secondaryAction={{ text: "View Services", href: "/services" }}
+      />
     </Layout>
   );
 };

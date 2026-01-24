@@ -1,13 +1,19 @@
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Linkedin, Twitter, Github, MessageSquare } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import ContactForm from "@/components/forms/ContactForm";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const contactInfo = [
   { icon: Mail, title: "Email", content: "hello@kctechnologies.com", href: "mailto:hello@kctechnologies.com" },
-  { icon: Phone, title: "Phone", content: "+1 (234) 567-890", href: "tel:+1234567890" },
-  { icon: MapPin, title: "Address", content: "123 Innovation Street, Tech City, TC 12345", href: null },
-  { icon: Clock, title: "Hours", content: "Mon - Fri: 9:00 AM - 6:00 PM", href: null }
+  { icon: MessageSquare, title: "Response Time", content: "Usually within 24 hours", href: null },
+  { icon: Clock, title: "Availability", content: "Open to projects & collaborations", href: null }
+];
+
+const socialLinks = [
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: "#", label: "GitHub" }
 ];
 
 const Contact = () => {
@@ -20,14 +26,14 @@ const Contact = () => {
         <div className="container container-padding relative">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 animate-fade-up">
-              Contact Us
+              Get in Touch
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold mb-6 animate-fade-up delay-75">
-              Get in touch
+              Let's talk about your project
             </h1>
             <p className="text-lg text-muted-foreground animate-fade-up delay-150">
-              Have a question or want to learn more? We'd love to hear from you. 
-              Our team typically responds within 24 hours.
+              Have an idea you want to build? Looking for a collaborator? Or just want to chat? 
+              I'd love to hear from you.
             </p>
           </div>
         </div>
@@ -40,9 +46,9 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="lg:col-span-2 space-y-6">
               <div className="animate-fade-up">
-                <h2 className="text-xl font-semibold mb-4">Contact Information</h2>
+                <h2 className="text-xl font-semibold mb-4">Ways to reach me</h2>
                 <p className="text-muted-foreground">
-                  Reach out through any of these channels.
+                  Feel free to reach out through any of these channels.
                 </p>
               </div>
 
@@ -74,14 +80,34 @@ const Contact = () => {
                   );
                 })}
               </div>
+
+              {/* Social Links */}
+              <div className="animate-fade-up" style={{ animationDelay: "400ms" }}>
+                <h3 className="text-sm font-semibold mb-3">Connect on social</h3>
+                <div className="flex gap-3">
+                  {socialLinks.map((social) => {
+                    const Icon = social.icon;
+                    return (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        aria-label={social.label}
+                        className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                      >
+                        <Icon className="h-4 w-4" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
 
             {/* Contact Form */}
             <div className="lg:col-span-3 animate-fade-up delay-200">
               <div className="bg-card rounded-xl p-8 border border-border">
-                <h2 className="text-xl font-semibold mb-2">Send us a message</h2>
+                <h2 className="text-xl font-semibold mb-2">Send me a message</h2>
                 <p className="text-muted-foreground mb-6">
-                  Fill out the form and we'll get back to you shortly.
+                  Tell me about your project or idea.
                 </p>
                 <ContactForm />
               </div>
@@ -104,10 +130,10 @@ const Contact = () => {
 
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
-              { q: "What products do you offer?", a: "We offer Analytics Pro and Workflow Hub, with more products coming soon." },
-              { q: "Do you offer free trials?", a: "Yes! All our products include a 14-day free trial with no credit card required." },
-              { q: "How do I get support?", a: "Email us or use this contact form. We respond within 24 hours." },
-              { q: "Can I schedule a demo?", a: "Absolutely! Fill out this form and we'll set up a personalized demo." }
+              { q: "What types of projects do you take on?", a: "I work on web apps, SaaS products, MVPs, and custom software. If it can be built with modern web tech, I'm interested!" },
+              { q: "How quickly can you start?", a: "It depends on my current workload, but I usually can start within 1-2 weeks. Let's discuss your timeline." },
+              { q: "Do you work with startups?", a: "Absolutely! I love working with other founders and early-stage startups. We can discuss flexible arrangements." },
+              { q: "Are you open to equity/partnership?", a: "For the right project, yes! I'm especially interested in collaborating with other ambitious founders." }
             ].map((faq, index) => (
               <div
                 key={index}
