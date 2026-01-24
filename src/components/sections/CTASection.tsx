@@ -10,10 +10,10 @@ interface CTASectionProps {
 }
 
 const CTASection = ({
-  title = "Ready to get started?",
-  description = "Join hundreds of companies using KC Technologies to drive growth.",
-  primaryAction = { text: "Start Free Trial", href: "/contact" },
-  secondaryAction = { text: "View Pricing", href: "/pricing" }
+  title = "Let's build something together",
+  description = "Whether you need a product, a custom solution, or just want to chat about ideas.",
+  primaryAction = { text: "Get in Touch", href: "/contact" },
+  secondaryAction = { text: "View My Work", href: "/products" }
 }: CTASectionProps) => {
   return (
     <section className="section-padding">

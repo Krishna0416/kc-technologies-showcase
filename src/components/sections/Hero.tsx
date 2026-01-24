@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles, Code, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const Hero = () => {
   return (
@@ -17,54 +16,57 @@ const Hero = () => {
 
       <div className="container relative container-padding">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Trust badge */}
+          {/* Founder badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-sm font-medium text-primary mb-8 animate-fade-up">
-            <CheckCircle2 className="h-4 w-4" />
-            Trusted by 100+ growing companies
+            <Sparkles className="h-4 w-4" />
+            Student Founder • Building the Future
           </div>
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-fade-up delay-75">
-            Software solutions that{" "}
-            <span className="text-gradient">scale with you</span>
+            I build products that{" "}
+            <span className="text-gradient">solve real problems</span>
           </h1>
 
           {/* Subtext */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up delay-150">
-            KC Technologies builds powerful, intuitive tools that help businesses 
-            streamline operations, make smarter decisions, and achieve sustainable growth.
+            Hey, I'm a student entrepreneur building software products and helping 
+            businesses bring their ideas to life. From concept to launch—let's create something great together.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-up delay-200">
             <Button asChild size="lg" className="h-12 px-8 text-base rounded-lg">
               <Link to="/products">
-                Explore Products
+                View My Work
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-12 px-8 text-base rounded-lg">
-              <Link to="/pricing">View Pricing</Link>
+              <Link to="/contact">Let's Collaborate</Link>
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-10 border-t border-border animate-fade-up delay-300">
+          {/* What I do cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-10 border-t border-border animate-fade-up delay-300">
             {[
-              { value: "100+", label: "Customers" },
-              { value: "99.9%", label: "Uptime" },
-              { value: "24/7", label: "Support" },
-              { value: "4.9/5", label: "Rating" }
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-foreground mb-1">
-                  {stat.value}
+              { icon: Code, label: "Software Products", desc: "SaaS & Web Apps" },
+              { icon: Rocket, label: "Client Projects", desc: "Custom Solutions" },
+              { icon: Sparkles, label: "Open to Collabs", desc: "Let's Build Together" }
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.label} className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover-lift transition-all duration-300">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-semibold text-foreground">{item.label}</div>
+                    <div className="text-sm text-muted-foreground">{item.desc}</div>
+                  </div>
                 </div>
-                <div className="text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

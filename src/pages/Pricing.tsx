@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
-import { Check, ArrowRight, HelpCircle } from "lucide-react";
+import { Check, ArrowRight, Zap, Users, Rocket } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
-const plans = [
+const productPlans = [
   {
     name: "Starter",
-    description: "Perfect for small teams getting started",
+    description: "Perfect for individuals and small teams",
     price: 29,
     period: "per user/month",
     popular: false,
@@ -23,8 +18,6 @@ const plans = [
       { text: "Email support", included: true },
       { text: "API access", included: false },
       { text: "Custom integrations", included: false },
-      { text: "Priority support", included: false },
-      { text: "Advanced reporting", included: false },
     ],
     cta: "Start Free Trial",
     ctaVariant: "outline" as const,
@@ -37,63 +30,51 @@ const plans = [
     popular: true,
     features: [
       { text: "Up to 25 team members", included: true },
-      { text: "Advanced analytics dashboard", included: true },
-      { text: "Unlimited workflow automations", included: true },
-      { text: "Priority email support", included: true },
+      { text: "Advanced analytics", included: true },
+      { text: "Unlimited automations", included: true },
+      { text: "Priority support", included: true },
       { text: "API access", included: true },
       { text: "Custom integrations", included: true },
-      { text: "Priority support", included: false },
-      { text: "Advanced reporting", included: false },
     ],
     cta: "Start Free Trial",
     ctaVariant: "default" as const,
   },
   {
     name: "Enterprise",
-    description: "For large organizations with custom needs",
+    description: "For larger organizations",
     price: null,
     priceLabel: "Custom",
     period: "tailored pricing",
     popular: false,
     features: [
       { text: "Unlimited team members", included: true },
-      { text: "Advanced analytics dashboard", included: true },
-      { text: "Unlimited workflow automations", included: true },
+      { text: "Advanced analytics", included: true },
+      { text: "Unlimited automations", included: true },
       { text: "24/7 dedicated support", included: true },
       { text: "API access", included: true },
       { text: "Custom integrations", included: true },
-      { text: "Priority support", included: true },
-      { text: "Advanced reporting", included: true },
     ],
-    cta: "Contact Sales",
+    cta: "Contact Me",
     ctaVariant: "outline" as const,
   },
 ];
 
 const faqs = [
   {
-    question: "What's included in the free trial?",
-    answer: "All plans include a 14-day free trial with full access to all features. No credit card required to start."
+    question: "Do you offer free trials?",
+    answer: "Yes! All product plans include a 14-day free trial with full access. No credit card required."
   },
   {
-    question: "Can I change plans later?",
-    answer: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately."
+    question: "What about custom project pricing?",
+    answer: "For custom development work, I provide quotes based on project scope. Reach out with your idea and I'll give you a transparent estimate."
   },
   {
-    question: "Do you offer discounts for annual billing?",
-    answer: "Yes, we offer a 20% discount when you pay annually instead of monthly."
+    question: "Do you offer student/startup discounts?",
+    answer: "Absolutely! I'm a student founder myself, so I understand budget constraints. Let's talk about what works for you."
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards, PayPal, and bank transfers for Enterprise plans."
-  },
-  {
-    question: "Is there a setup fee?",
-    answer: "No, there are no setup fees or hidden charges. You only pay for your subscription."
-  },
-  {
-    question: "Can I cancel anytime?",
-    answer: "Yes, you can cancel your subscription at any time. Your access continues until the end of your billing period."
+    answer: "For products: all major credit cards. For services: we can discuss payment terms that work for both of us."
   },
 ];
 
@@ -113,17 +94,22 @@ const Pricing = () => {
               Simple, transparent pricing
             </h1>
             <p className="text-lg text-muted-foreground animate-fade-up delay-150">
-              Choose the plan that's right for your team. All plans include a 14-day free trial.
+              Choose a plan for my products, or reach out for custom project pricing.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Pricing Cards */}
+      {/* Product Pricing */}
       <section className="pb-20">
         <div className="container container-padding">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold mb-2">Product Plans</h2>
+            <p className="text-muted-foreground">For Analytics Pro & Workflow Hub</p>
+          </div>
+          
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {plans.map((plan, index) => (
+            {productPlans.map((plan, index) => (
               <div
                 key={plan.name}
                 className={cn(
@@ -153,7 +139,7 @@ const Pricing = () => {
                     {plan.price !== null ? (
                       <>
                         <span className="text-4xl font-bold">${plan.price}</span>
-                        <span className="text-muted-foreground text-sm">/{plan.period.split('/')[1] || 'month'}</span>
+                        <span className="text-muted-foreground text-sm">/month</span>
                       </>
                     ) : (
                       <span className="text-4xl font-bold">{plan.priceLabel}</span>
@@ -195,17 +181,53 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Features Comparison Note */}
+      {/* Custom Projects */}
       <section className="pb-20">
         <div className="container container-padding">
-          <div className="max-w-3xl mx-auto text-center bg-muted/30 rounded-xl p-8 border border-border">
-            <h3 className="text-lg font-semibold mb-2">Need help choosing?</h3>
-            <p className="text-muted-foreground mb-4">
-              Our team is here to help you find the perfect plan for your business needs.
-            </p>
-            <Button asChild variant="outline">
-              <Link to="/contact">Talk to Sales</Link>
-            </Button>
+          <div className="max-w-4xl mx-auto bg-muted/30 rounded-2xl p-8 md:p-12 border border-border">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                  <Rocket className="h-4 w-4" />
+                  Custom Projects
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4">Need something built?</h2>
+                <p className="text-muted-foreground mb-6">
+                  For custom development projects, I provide transparent pricing based on scope 
+                  and complexity. Let's discuss your idea and I'll give you a fair quote.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild size="lg" className="h-12 px-8 rounded-lg">
+                    <Link to="/contact">
+                      Get a Quote
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
+                    <Link to="/services">View Services</Link>
+                  </Button>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { icon: Zap, label: "Fast Turnaround" },
+                  { icon: Users, label: "Flexible Terms" },
+                  { icon: Check, label: "Transparent Pricing" },
+                  { icon: Rocket, label: "Quality Work" }
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.label} className="bg-card rounded-xl p-4 border border-border text-center">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mx-auto mb-2">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <p className="text-sm font-medium">{item.label}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -220,9 +242,6 @@ const Pricing = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 animate-fade-up delay-75">
               Frequently asked questions
             </h2>
-            <p className="text-lg text-muted-foreground animate-fade-up delay-150">
-              Everything you need to know about our pricing.
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -245,10 +264,10 @@ const Pricing = () => {
         <div className="container container-padding">
           <div className="relative rounded-2xl bg-primary px-8 py-16 md:px-16 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Start your free trial today
+              Ready to get started?
             </h2>
             <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
-              Join hundreds of companies using KC Technologies. No credit card required.
+              Whether you want to use my products or build something custom, let's chat.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
@@ -257,7 +276,7 @@ const Pricing = () => {
                 className="bg-white text-primary hover:bg-white/90 h-12 px-8 rounded-lg"
               >
                 <Link to="/contact">
-                  Get Started Free
+                  Get in Touch
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -267,7 +286,7 @@ const Pricing = () => {
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 h-12 px-8 rounded-lg bg-transparent"
               >
-                <Link to="/contact">Contact Sales</Link>
+                <Link to="/products">View Products</Link>
               </Button>
             </div>
           </div>

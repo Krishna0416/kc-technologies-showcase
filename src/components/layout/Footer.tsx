@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from "lucide-react";
+import { Mail, Linkedin, Twitter, Github, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -17,46 +17,37 @@ const Footer = () => {
               <span className="text-lg font-semibold">KC Technologies</span>
             </Link>
             <p className="text-background/70 text-sm leading-relaxed max-w-xs">
-              Building innovative software solutions that empower businesses to grow and succeed.
+              Student founder building software products and helping businesses bring their ideas to life.
             </p>
             <div className="flex gap-3">
-              {[Linkedin, Twitter, Github].map((Icon, i) => (
-                <a 
-                  key={i}
-                  href="#" 
-                  className="w-9 h-9 rounded-lg bg-background/10 flex items-center justify-center text-background/60 hover:bg-primary hover:text-white transition-colors"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              {[
+                { icon: Linkedin, href: "#", label: "LinkedIn" },
+                { icon: Twitter, href: "#", label: "Twitter" },
+                { icon: Github, href: "#", label: "GitHub" }
+              ].map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a 
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-9 h-9 rounded-lg bg-background/10 flex items-center justify-center text-background/60 hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
-          {/* Products */}
+          {/* Products & Services */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Products</h4>
-            <nav className="flex flex-col gap-2.5">
-              {["Analytics Pro", "Workflow Hub", "Pricing", "All Products"].map((item) => (
-                <Link 
-                  key={item}
-                  to={item === "Pricing" ? "/pricing" : "/products"} 
-                  className="text-sm text-background/70 hover:text-primary transition-colors"
-                >
-                  {item}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Company */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Company</h4>
+            <h4 className="text-sm font-semibold">Work</h4>
             <nav className="flex flex-col gap-2.5">
               {[
-                { name: "About", path: "/about" },
-                { name: "Contact", path: "/contact" },
-                { name: "Careers", path: "/about" },
-                { name: "Blog", path: "/about" }
+                { name: "Products", path: "/products" },
+                { name: "Services", path: "/services" },
+                { name: "Pricing", path: "/pricing" }
               ].map((item) => (
                 <Link 
                   key={item.name}
@@ -69,11 +60,42 @@ const Footer = () => {
             </nav>
           </div>
 
+          {/* Company */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold">Connect</h4>
+            <nav className="flex flex-col gap-2.5">
+              {[
+                { name: "About", path: "/about" },
+                { name: "Contact", path: "/contact" },
+                { name: "LinkedIn", path: "#" },
+                { name: "Twitter", path: "#" }
+              ].map((item) => (
+                item.path.startsWith("/") ? (
+                  <Link 
+                    key={item.name}
+                    to={item.path} 
+                    className="text-sm text-background/70 hover:text-primary transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a 
+                    key={item.name}
+                    href={item.path} 
+                    className="text-sm text-background/70 hover:text-primary transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                )
+              ))}
+            </nav>
+          </div>
+
           {/* Newsletter */}
           <div className="col-span-2 md:col-span-1 space-y-4">
             <h4 className="text-sm font-semibold">Stay Updated</h4>
             <p className="text-sm text-background/70">
-              Subscribe for updates and insights.
+              Get updates on new products and projects.
             </p>
             <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
               <Input
@@ -91,8 +113,10 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-background/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-background/50">
-              © {new Date().getFullYear()} KC Technologies. All rights reserved.
+            <p className="text-xs text-background/50 flex items-center gap-1">
+              © {new Date().getFullYear()} KC Technologies. Built with{" "}
+              <Heart className="h-3 w-3 text-red-400 fill-red-400" />
+              by a student founder.
             </p>
             <div className="flex gap-6">
               <a href="#" className="text-xs text-background/50 hover:text-primary transition-colors">
