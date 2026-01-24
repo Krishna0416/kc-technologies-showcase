@@ -1,4 +1,4 @@
-import { BarChart3, Workflow, Zap, Shield, Clock, Users, TrendingUp, Settings, Lock, Cloud, Cpu, LineChart } from "lucide-react";
+import { Package, Heart, Smartphone, Monitor, Truck, Users, Bell, MessageCircle, Activity, Shield, BarChart3, ClipboardList, UserCheck, HeartHandshake, Brain, Link } from "lucide-react";
 
 export interface Feature {
   icon: React.ComponentType<{ className?: string }>;
@@ -20,79 +20,79 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: "analytics-pro",
-    name: "Analytics Pro",
-    tagline: "Turn data into decisions",
-    description: "Powerful analytics dashboard that transforms your business data into actionable insights. Real-time metrics, custom reports, and intelligent forecasting.",
-    longDescription: "Analytics Pro is a comprehensive business intelligence platform designed for modern teams. Get real-time visibility into your key metrics, create custom dashboards, and leverage AI-powered forecasting to make data-driven decisions faster than ever before.",
-    icon: BarChart3,
-    color: "from-blue-500 to-cyan-500",
+    id: "orderly",
+    name: "Orderly",
+    tagline: "Streamline your distribution, amplify your sales",
+    description: "A complete Distribution Management System with a powerful web admin portal and dedicated mobile apps for your sales team and delivery personnel.",
+    longDescription: "Orderly is an end-to-end order and inventory management solution designed for modern distribution businesses. It connects your entire supply chain—from warehouse managers to field sales representatives to delivery drivers—through a unified, real-time platform that eliminates manual errors and accelerates order fulfillment.",
+    icon: Package,
+    color: "from-blue-500 to-indigo-500",
     features: [
       {
-        icon: LineChart,
+        icon: Monitor,
+        title: "Admin Web Portal",
+        description: "Centralized dashboard for inventory tracking, order management, analytics, and complete business oversight."
+      },
+      {
+        icon: Smartphone,
+        title: "Salesperson Mobile App",
+        description: "Empower your field sales team to place orders, check stock availability, and manage customer relationships on the go."
+      },
+      {
+        icon: Truck,
+        title: "Delivery App",
+        description: "Optimized routing, real-time delivery tracking, proof of delivery, and seamless communication with dispatch."
+      },
+      {
+        icon: BarChart3,
         title: "Real-Time Analytics",
-        description: "Monitor your metrics as they happen with live data updates and instant notifications."
-      },
-      {
-        icon: TrendingUp,
-        title: "Predictive Insights",
-        description: "AI-powered forecasting helps you anticipate trends and make proactive decisions."
-      },
-      {
-        icon: Users,
-        title: "Team Collaboration",
-        description: "Share dashboards, annotate reports, and keep everyone aligned on the same goals."
-      },
-      {
-        icon: Shield,
-        title: "Enterprise Security",
-        description: "Bank-level encryption and compliance with SOC 2, GDPR, and HIPAA standards."
+        description: "Track sales performance, inventory turnover, and delivery efficiency with actionable insights."
       }
     ],
     benefits: [
-      "50% faster decision making",
-      "Real-time data synchronization",
-      "Custom dashboard builder",
-      "Automated reporting",
-      "Mobile-friendly interface"
+      "Unified platform",
+      "Real-time inventory sync",
+      "Route optimization",
+      "Order tracking",
+      "Multi-location support"
     ]
   },
   {
-    id: "workflow-hub",
-    name: "Workflow Hub",
-    tagline: "Automate. Simplify. Scale.",
-    description: "Streamline your operations with intelligent workflow automation. Connect your tools, eliminate manual tasks, and focus on what matters most.",
-    longDescription: "Workflow Hub revolutionizes how teams work by automating repetitive tasks and connecting all your business tools in one place. From simple task automation to complex multi-step processes, Workflow Hub scales with your business needs.",
-    icon: Workflow,
-    color: "from-orange-500 to-amber-500",
+    id: "dilcare",
+    name: "DilCare",
+    tagline: "Because distance shouldn't mean disconnect",
+    description: "An all-in-one eldercare ecosystem that automates health tracking, medication reminders, and emergency alerts—giving peace of mind to families caring from afar.",
+    longDescription: "DilCare bridges the gap between busy adult children and their aging parents living alone. Built on React Native for high performance, it replaces complex health apps with voice-first interactions and emotionally intuitive design, making technology feel supportive rather than intimidating.",
+    icon: Heart,
+    color: "from-rose-500 to-pink-500",
     features: [
       {
-        icon: Zap,
-        title: "No-Code Automation",
-        description: "Build powerful workflows without writing a single line of code using our visual builder."
+        icon: Brain,
+        title: "AI Health Companion",
+        description: "Talks gently, answers questions in simple words, and reminds parents about their health without sounding bossy or robotic."
       },
       {
-        icon: Cloud,
-        title: "500+ Integrations",
-        description: "Connect with all your favorite tools including Slack, Salesforce, HubSpot, and more."
+        icon: Link,
+        title: "Parent-Child Account Linking",
+        description: "Parents and children can link accounts, enabling children to monitor medication adherence, health alerts, and daily well-being through a single dashboard."
       },
       {
-        icon: Clock,
-        title: "Time-Based Triggers",
-        description: "Schedule workflows to run at specific times or intervals automatically."
+        icon: Users,
+        title: "Community Connection",
+        description: "DilCare connects parents with others on similar journeys, making healthy routines feel shared, not lonely."
       },
       {
-        icon: Cpu,
-        title: "Smart Conditions",
-        description: "Create intelligent branching logic with conditions, filters, and dynamic data."
+        icon: HeartHandshake,
+        title: "Emotional-First UX",
+        description: "Designed to feel calm, friendly, and reassuring—reducing stress instead of increasing it, unlike clinical health apps."
       }
     ],
     benefits: [
-      "Save 10+ hours per week",
-      "Zero coding required",
-      "Unlimited workflows",
-      "24/7 automation",
-      "Version history & rollback"
+      "Daily health tracking",
+      "Medication reminders",
+      "Emergency alerts",
+      "Voice-first interface",
+      "Family dashboard"
     ]
   }
 ];
