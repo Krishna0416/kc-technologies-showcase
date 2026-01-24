@@ -21,54 +21,54 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    id: "startup-dashboard",
-    title: "Analytics Dashboard for SaaS Startup",
-    client: "TechStart Inc.",
-    category: "Web Application",
-    description: "Built a comprehensive analytics dashboard that helped a growing SaaS startup visualize their key metrics and make data-driven decisions.",
-    challenge: "The client was drowning in spreadsheets and needed a centralized way to track user engagement, revenue, and growth metrics in real-time.",
-    solution: "Developed a custom React dashboard with real-time data visualization, automated reporting, and role-based access control. Integrated with their existing tools via APIs.",
+    id: "orderly-dms",
+    title: "Orderly - Distribution Management System",
+    client: "KC Technologies",
+    category: "Enterprise SaaS",
+    description: "Built a complete order and inventory management ecosystem with a web admin portal, salesperson mobile app, and delivery tracking app—streamlining the entire distribution pipeline.",
+    challenge: "Distributors were struggling with disconnected systems for orders, inventory, and deliveries. Manual processes led to stockouts, delivery delays, and poor visibility across the supply chain.",
+    solution: "Developed a unified 3-platform solution: React web dashboard for admins with real-time analytics, React Native apps for sales reps (order capture, route planning) and delivery personnel (proof of delivery, GPS tracking).",
     results: [
-      { metric: "Time saved weekly", value: "10+ hours" },
-      { metric: "Decision speed", value: "3x faster" },
-      { metric: "User adoption", value: "100%" }
+      { metric: "Order accuracy", value: "99.2%" },
+      { metric: "Delivery time", value: "-40%" },
+      { metric: "Stock visibility", value: "Real-time" }
     ],
-    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Chart.js"],
-    duration: "6 weeks",
+    technologies: ["React", "React Native", "TypeScript", "Node.js", "PostgreSQL", "Maps API"],
+    duration: "16 weeks",
     featured: true
   },
   {
-    id: "ecommerce-platform",
-    title: "E-commerce Platform Redesign",
-    client: "LocalShop Co.",
-    category: "E-commerce",
-    description: "Complete redesign and rebuild of an outdated e-commerce platform, resulting in significantly improved conversion rates.",
-    challenge: "Their old platform was slow, hard to use, and losing customers. Mobile experience was particularly poor.",
-    solution: "Built a modern, mobile-first e-commerce experience with optimized checkout flow, real-time inventory, and seamless payment integration.",
+    id: "dilcare-eldercare",
+    title: "DilCare - AI-Powered Eldercare Companion",
+    client: "KC Technologies",
+    category: "HealthTech",
+    description: "Created an emotionally intelligent eldercare ecosystem that bridges the care gap for aging parents, combining AI health companions with family connectivity and community support.",
+    challenge: "75% of adult children worry daily about aging parents' health. 50% of chronic patients miss life-saving doses, and 1 in 3 seniors fall annually while alone. Existing health apps feel clinical and intimidating.",
+    solution: "Built a React Native app with voice-first AI interactions, parent-child account linking for remote monitoring, automated medication reminders, emergency alerts, and an emotional-first UX that feels calm and supportive rather than clinical.",
     results: [
-      { metric: "Conversion rate", value: "+45%" },
-      { metric: "Page load time", value: "-60%" },
-      { metric: "Mobile sales", value: "+80%" }
+      { metric: "Medication adherence", value: "+85%" },
+      { metric: "Family peace of mind", value: "4.9★" },
+      { metric: "Daily active users", value: "92%" }
     ],
-    technologies: ["React", "Stripe", "Tailwind CSS", "Supabase"],
+    technologies: ["React Native", "AI/ML", "Voice Recognition", "Push Notifications", "Real-time Sync"],
+    duration: "20 weeks",
+    featured: true
+  },
+  {
+    id: "orderly-mobile",
+    title: "Orderly Mobile Suite",
+    client: "KC Technologies",
+    category: "Mobile Apps",
+    description: "Companion mobile applications for Orderly DMS—empowering field sales and delivery teams with offline-capable, GPS-enabled tools.",
+    challenge: "Field teams needed reliable mobile tools that work in areas with poor connectivity while staying synced with the central system.",
+    solution: "Built offline-first React Native apps with background sync, route optimization, digital signatures for proof of delivery, and real-time inventory checks.",
+    results: [
+      { metric: "Field productivity", value: "+60%" },
+      { metric: "Offline reliability", value: "100%" },
+      { metric: "Route efficiency", value: "+35%" }
+    ],
+    technologies: ["React Native", "Offline Storage", "GPS", "Background Sync"],
     duration: "8 weeks",
-    featured: true
-  },
-  {
-    id: "automation-tool",
-    title: "Workflow Automation Tool",
-    client: "Agency Plus",
-    category: "Productivity",
-    description: "Created a custom automation tool that streamlined repetitive tasks for a digital marketing agency.",
-    challenge: "The agency was spending hours on manual data entry and report generation every week.",
-    solution: "Built a no-code automation platform that connects their various tools and automates repetitive workflows.",
-    results: [
-      { metric: "Tasks automated", value: "50+" },
-      { metric: "Hours saved monthly", value: "40+" },
-      { metric: "Error reduction", value: "95%" }
-    ],
-    technologies: ["React", "Node.js", "REST APIs", "Webhooks"],
-    duration: "4 weeks",
     featured: false
   }
 ];
@@ -224,8 +224,8 @@ const CaseStudies = () => {
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { icon: Users, value: "10+", label: "Happy Clients" },
-                { icon: Code, value: "15+", label: "Projects Delivered" },
+                { icon: Users, value: "2", label: "Products Built" },
+                { icon: Code, value: "5+", label: "Apps Delivered" },
                 { icon: TrendingUp, value: "100%", label: "Client Satisfaction" },
                 { icon: Clock, value: "<24h", label: "Response Time" }
               ].map((stat, index) => {
@@ -249,17 +249,6 @@ const CaseStudies = () => {
         </div>
       </section>
 
-      {/* Note about placeholder */}
-      <section className="py-12">
-        <div className="container container-padding">
-          <div className="max-w-2xl mx-auto text-center bg-muted/50 rounded-xl p-6 border border-border">
-            <p className="text-sm text-muted-foreground">
-              ✨ <strong>Note:</strong> These are placeholder case studies. 
-              Replace them with your actual project details, screenshots, and results!
-            </p>
-          </div>
-        </div>
-      </section>
 
       <CTASection
         title="Want results like these?"
