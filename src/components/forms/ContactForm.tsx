@@ -50,6 +50,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
+      // Save to database
       const { error } = await supabase
         .from("contact_submissions")
         .insert({
@@ -60,6 +61,21 @@ const ContactForm = () => {
         });
 
       if (error) throw error;
+
+      // Send email notifications
+      const emailResponse = await supabase.functions.invoke('send-contact-notification', {
+        body: {
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        },
+      });
+
+      if (emailResponse.error) {
+        console.warn("Email notification failed:", emailResponse.error);
+        // Don't throw - form submission succeeded, just email failed
+      }
 
       toast.success("Message sent successfully!", {
         description: "I'll get back to you within 24 hours.",
