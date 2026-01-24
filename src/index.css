@@ -96,15 +96,25 @@
 @layer components {
   /* Professional glass effect - subtle */
   .glass {
-    @apply bg-white/90 backdrop-blur-md border border-border/60;
+    @apply bg-background/90 backdrop-blur-md border border-border/60;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
+  .dark .glass {
+    @apply bg-background/80;
+  }
+
   .glass-card {
-    @apply bg-white border border-border/60;
+    @apply bg-card border border-border/60;
     box-shadow: 
       0 1px 3px rgba(0, 0, 0, 0.04),
       0 4px 12px rgba(0, 0, 0, 0.03);
+  }
+
+  .dark .glass-card {
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   /* Section padding */

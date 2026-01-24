@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Linkedin, Twitter, Github, Heart } from "lucide-react";
+import { Linkedin, Twitter, Github, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -47,6 +47,7 @@ const Footer = () => {
               {[
                 { name: "Products", path: "/products" },
                 { name: "Services", path: "/services" },
+                { name: "Case Studies", path: "/case-studies" },
                 { name: "Pricing", path: "/pricing" }
               ].map((item) => (
                 <Link 

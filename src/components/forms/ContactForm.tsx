@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Send } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -32,6 +34,8 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -42,11 +46,33 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    toast.success("Message sent successfully!", {
-      description: "We'll get back to you within 24 hours.",
-    });
-    form.reset();
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      const { error } = await supabase
+        .from("contact_submissions")
+        .insert({
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        });
+
+      if (error) throw error;
+
+      toast.success("Message sent successfully!", {
+        description: "I'll get back to you within 24 hours.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to send message", {
+        description: "Please try again or email me directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -90,15 +116,14 @@ const ContactForm = () => {
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="h-11">
-                    <SelectValue placeholder="What can we help you with?" />
+                    <SelectValue placeholder="What can I help you with?" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent className="bg-card border-border">
-                  <SelectItem value="general">General Inquiry</SelectItem>
-                  <SelectItem value="product">Product Information</SelectItem>
-                  <SelectItem value="demo">Request a Demo</SelectItem>
-                  <SelectItem value="support">Technical Support</SelectItem>
-                  <SelectItem value="partnership">Partnership</SelectItem>
+                  <SelectItem value="project">New Project</SelectItem>
+                  <SelectItem value="collaboration">Collaboration</SelectItem>
+                  <SelectItem value="product">Product Inquiry</SelectItem>
+                  <SelectItem value="consulting">Consulting</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
@@ -115,7 +140,7 @@ const ContactForm = () => {
               <FormLabel>Message</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Tell us how we can help..."
+                  placeholder="Tell me about your project or idea..."
                   rows={4}
                   className="resize-none"
                   {...field}
@@ -126,9 +151,18 @@ const ContactForm = () => {
           )}
         />
 
-        <Button type="submit" size="lg" className="h-11 px-6">
-          Send Message
-          <Send className="ml-2 h-4 w-4" />
+        <Button type="submit" size="lg" className="h-11 px-6" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              Send Message
+              <Send className="ml-2 h-4 w-4" />
+            </>
+          )}
         </Button>
       </form>
     </Form>
