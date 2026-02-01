@@ -12,7 +12,7 @@ const services = [
     icon: Code,
     title: "Custom Web Development",
     description: "Full-stack web applications tailored to your specific needs. From simple landing pages to complex SaaS platforms.",
-    features: ["React & TypeScript", "Node.js backends", "Database design", "API integrations"],
+    features: ["React & TypeScript", "Django & FastAPI backends", "Database design", "API integrations"],
     popular: true
   },
   {
