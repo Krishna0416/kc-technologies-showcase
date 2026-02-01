@@ -12,9 +12,9 @@ const Footer = () => {
           <div className="col-span-2 lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-2.5">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <span className="text-sm font-bold text-white">KC</span>
+                <span className="text-sm font-bold text-white">kb</span>
               </div>
-              <span className="text-lg font-semibold">KC Technologies</span>
+              <span className="text-lg font-semibold">krishbuilds</span>
             </Link>
             <p className="text-background/70 text-sm leading-relaxed max-w-xs">
               Student founder building software products and helping businesses bring their ideas to life.
@@ -115,7 +115,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-background/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-background/50 flex items-center gap-1">
-              © {new Date().getFullYear()} KC Technologies. Built with{" "}
+              © {new Date().getFullYear()} krishbuilds. Built with{" "}
               <Heart className="h-3 w-3 text-red-400 fill-red-400" />
               by a student founder.
             </p>

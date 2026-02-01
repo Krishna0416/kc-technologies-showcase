@@ -41,10 +41,10 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="text-sm font-bold text-white">KC</span>
+            <span className="text-sm font-bold text-white">kb</span>
           </div>
           <span className="text-lg font-semibold text-foreground hidden sm:block">
-            KC Technologies
+            krishbuilds
           </span>
         </Link>
 
@@ -91,9 +91,9 @@ const Navbar = () => {
                 <div className="p-6 border-b">
                   <Link to="/" className="flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                      <span className="text-sm font-bold text-white">KC</span>
+                      <span className="text-sm font-bold text-white">kb</span>
                     </div>
-                    <span className="text-lg font-semibold">KC Technologies</span>
+                    <span className="text-lg font-semibold">krishbuilds</span>
                   </Link>
                 </div>
 
