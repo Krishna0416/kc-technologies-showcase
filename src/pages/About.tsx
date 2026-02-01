@@ -123,9 +123,8 @@ const About = () => {
                 <span className="text-sm text-muted-foreground">Connect with me:</span>
                 <div className="flex gap-3">
                   {[
-                    { icon: Linkedin, href: "#", label: "LinkedIn" },
-                    { icon: Twitter, href: "#", label: "Twitter" },
-                    { icon: Github, href: "#", label: "GitHub" }
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/krishna-chandak-85294432b", label: "LinkedIn" },
+                    { icon: Github, href: "https://github.com/krishnaChandak044", label: "GitHub" }
                   ].map((social) => {
                     const Icon = social.icon;
                     return (

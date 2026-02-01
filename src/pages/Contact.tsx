@@ -7,15 +7,14 @@ import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
 const contactInfo = [
-  { icon: Mail, title: "Email", content: "hello@krishbuilds.com", href: "mailto:hello@krishbuilds.com" },
-  { icon: MessageSquare, title: "Response Time", content: "Usually within 24 hours", href: null },
+  { icon: Mail, title: "Email", content: "krishnachandak444@gmail.com", href: "mailto:krishnachandak444@gmail.com" },
+  { icon: MessageSquare, title: "Phone", content: "+91 7700099914", href: "tel:+917700099914" },
   { icon: Clock, title: "Availability", content: "Open to projects & collaborations", href: null }
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Github, href: "#", label: "GitHub" }
+  { icon: Linkedin, href: "https://www.linkedin.com/in/krishna-chandak-85294432b", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/krishnaChandak044", label: "GitHub" }
 ];
 
 const Contact = () => {
