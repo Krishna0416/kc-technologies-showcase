@@ -56,9 +56,9 @@ const ProductDetail = () => {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
+                {/* <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
                   <Link to="/pricing">View Pricing</Link>
-                </Button>
+                </Button> */}
               </div>
             </div>
 
