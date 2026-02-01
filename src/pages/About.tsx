@@ -1,10 +1,11 @@
-import { Target, Eye, Zap, Trophy, Clock, Flame, Code2, Lightbulb, Heart, ArrowRight, Quote, Mail, Linkedin, Twitter, Github } from "lucide-react";
+import { Target, Eye, Zap, Trophy, Clock, Flame, Code2, Lightbulb, Heart, ArrowRight, Quote, Mail, Linkedin, Github, Download, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import CTASection from "@/components/sections/CTASection";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 import { Button } from "@/components/ui/button";
+import { products } from "@/data/products";
 
 const stats = [
   { value: "24/7", label: "Building Mode", icon: Zap },
@@ -141,12 +142,20 @@ const About = () => {
                     );
                   })}
                 </div>
-                <Button asChild variant="outline" size="sm" className="ml-2">
-                  <Link to="/contact">
-                    <Mail className="h-4 w-4 mr-2" />
-                    Let's Talk
-                  </Link>
-                </Button>
+                <div className="flex gap-2 ml-2">
+                  <Button asChild variant="outline" size="sm">
+                    <Link to="/contact">
+                      <Mail className="h-4 w-4 mr-2" />
+                      Let's Talk
+                    </Link>
+                  </Button>
+                  <Button asChild size="sm" className="group">
+                    <a href="/resume.pdf" download>
+                      <Download className="h-4 w-4 mr-2" />
+                      Resume
+                    </a>
+                  </Button>
+                </div>
               </div>
             </AnimatedSection>
           </div>
@@ -367,6 +376,84 @@ const About = () => {
               </div>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* Live Project Demos */}
+      <section className="section-padding bg-muted/30">
+        <div className="container container-padding">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <AnimatedSection>
+              <p className="section-label">Currently Building</p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <h2>Projects in Development</h2>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <p className="section-description mx-auto">
+                Here's what I'm actively working on. These are real products designed to solve real problems.
+              </p>
+            </AnimatedSection>
+          </div>
+
+          <StaggerContainer className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto" staggerDelay={0.15}>
+            {products.map((product) => {
+              const Icon = product.icon;
+              return (
+                <StaggerItem key={product.id}>
+                  <motion.div 
+                    className="bg-card rounded-2xl border border-border overflow-hidden group hover:border-primary/30 transition-all"
+                    whileHover={{ y: -4 }}
+                  >
+                    {/* Preview placeholder */}
+                    <div className={`h-40 bg-gradient-to-br ${product.color} relative overflow-hidden`}>
+                      <div className="absolute inset-0 bg-black/20" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center text-white">
+                          <Icon className="h-12 w-12 mx-auto mb-2 opacity-90" />
+                          <span className="text-xs font-medium uppercase tracking-wider opacity-75">Preview Coming Soon</span>
+                        </div>
+                      </div>
+                      {/* Status badge */}
+                      <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-medium">
+                        🚧 In Development
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h3 className="font-semibold text-lg">{product.name}</h3>
+                          <p className="text-sm text-muted-foreground">{product.tagline}</p>
+                        </div>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                        {product.description}
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <Button asChild variant="outline" size="sm" className="group/btn">
+                          <Link to={`/products/${product.id}`}>
+                            Learn More
+                            <ArrowRight className="ml-1.5 h-3.5 w-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+
+          <AnimatedSection delay={0.3} className="text-center mt-10">
+            <Button asChild variant="outline" size="lg" className="group">
+              <Link to="/products">
+                View All Projects
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </AnimatedSection>
         </div>
       </section>
 
