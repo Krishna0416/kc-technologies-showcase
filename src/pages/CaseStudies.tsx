@@ -33,7 +33,7 @@ const caseStudies: CaseStudy[] = [
       { metric: "Delivery time", value: "-40%" },
       { metric: "Stock visibility", value: "Real-time" }
     ],
-    technologies: ["React", "React Native", "TypeScript", "Node.js", "PostgreSQL", "Maps API"],
+    technologies: ["React", "React Native", "Django", "FastAPI", "Python", "PostgreSQL"],
     duration: "Beta Testing",
     featured: true
   },
@@ -50,7 +50,7 @@ const caseStudies: CaseStudy[] = [
       { metric: "Family peace of mind", value: "4.9★" },
       { metric: "Daily active users", value: "92%" }
     ],
-    technologies: ["React Native", "AI/ML", "Voice Recognition", "Push Notifications", "Real-time Sync"],
+    technologies: ["React Native", "Python", "Django", "FastAPI", "AI/ML", "Voice Recognition"],
     duration: "Beta Testing",
     featured: true
   },
@@ -67,7 +67,7 @@ const caseStudies: CaseStudy[] = [
       { metric: "Offline reliability", value: "100%" },
       { metric: "Route efficiency", value: "+35%" }
     ],
-    technologies: ["React Native", "Offline Storage", "GPS", "Background Sync"],
+    technologies: ["React Native", "Python", "FastAPI", "Offline Storage", "GPS"],
     duration: "Beta Testing",
     featured: false
   }
