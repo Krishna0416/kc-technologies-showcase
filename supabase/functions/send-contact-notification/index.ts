@@ -27,8 +27,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification to you (the site owner)
     const notificationEmail = await resend.emails.send({
-      from: "KC Technologies <onboarding@resend.dev>",
-      to: ["hello@kctechnologies.com"], // Change this to your email
+      from: "krishbuilds <onboarding@resend.dev>",
+      to: ["hello@krishbuilds.com"], // Change this to your email
       subject: `New Contact: ${subject} from ${name}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -54,7 +54,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send confirmation to the person who submitted
     const confirmationEmail = await resend.emails.send({
-      from: "KC Technologies <onboarding@resend.dev>",
+      from: "krishbuilds <onboarding@resend.dev>",
       to: [email],
       subject: "Thanks for reaching out!",
       html: `
@@ -76,7 +76,7 @@ const handler = async (req: Request): Promise<Response> => {
           
           <p style="color: #4b5563;">
             Best,<br/>
-            <strong>KC Technologies</strong>
+            <strong>krishbuilds</strong>
           </p>
         </div>
       `,
