@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Code, Palette, Rocket, Settings, Zap, Users, CheckCircle2, MessageSquare } from "lucide-react";
+import { ArrowRight, Code, Palette, Rocket, Settings, Zap, CheckCircle2, MessageSquare } from "lucide-react";
+import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import CTASection from "@/components/sections/CTASection";
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 import { cn } from "@/lib/utils";
 
 const services = [
@@ -45,7 +47,7 @@ const process = [
 
 const testimonials = [
   {
-    quote: "Working with KC Technologies was a great experience. They delivered exactly what we needed, on time.",
+    quote: "Working with krishbuilds was a great experience. They delivered exactly what we needed, on time.",
     author: "Happy Client",
     role: "Startup Founder"
   },
@@ -65,28 +67,32 @@ const Services = () => {
         
         <div className="container container-padding relative">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 animate-fade-up">
-              Services
-            </p>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6 animate-fade-up delay-75">
-              Let's bring your ideas to life
-            </h1>
-            <p className="text-lg text-muted-foreground animate-fade-up delay-150">
-              I offer a range of development and design services to help you build 
-              amazing products. From quick MVPs to full-scale applications.
-            </p>
+            <AnimatedSection>
+              <p className="section-label">Services</p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <h1 className="mb-6">Let's bring your ideas to life</h1>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <p className="section-description mx-auto">
+                I offer a range of development and design services to help you build 
+                amazing products. From quick MVPs to full-scale applications.
+              </p>
+            </AnimatedSection>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 animate-fade-up delay-200">
-              <Button asChild size="lg" className="h-12 px-8 rounded-lg">
-                <Link to="/contact">
-                  Start a Project
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
-                <Link to="/products">See My Work</Link>
-              </Button>
-            </div>
+            <AnimatedSection delay={0.3}>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                <Button asChild size="lg" className="h-12 px-8 rounded-lg group">
+                  <Link to="/contact">
+                    Start a Project
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
+                  <Link to="/products">See My Work</Link>
+                </Button>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -94,45 +100,45 @@ const Services = () => {
       {/* Services Grid */}
       <section className="pb-20">
         <div className="container container-padding">
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {services.map((service, index) => {
+          <StaggerContainer className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto" staggerDelay={0.1}>
+            {services.map((service) => {
               const Icon = service.icon;
               return (
-                <div
-                  key={service.title}
-                  className={cn(
-                    "relative bg-card rounded-xl p-8 border hover-lift transition-all duration-300 animate-fade-up",
-                    service.popular ? "border-primary/50 ring-1 ring-primary/20" : "border-border"
-                  )}
-                  style={{ animationDelay: `${150 + index * 75}ms` }}
-                >
-                  {service.popular && (
-                    <div className="absolute -top-3 right-6">
-                      <span className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
-                        Popular
-                      </span>
+                <StaggerItem key={service.title}>
+                  <div
+                    className={cn(
+                      "relative bg-card rounded-xl p-8 border card-interactive h-full",
+                      service.popular ? "border-primary/50 ring-1 ring-primary/20" : "border-border"
+                    )}
+                  >
+                    {service.popular && (
+                      <div className="absolute -top-3 right-6">
+                        <span className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
+                          Popular
+                        </span>
+                      </div>
+                    )}
+                    
+                    <div className="icon-container icon-container-md mb-6">
+                      <Icon className="h-6 w-6" />
                     </div>
-                  )}
-                  
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-6">
-                    <Icon className="h-6 w-6" />
+                    
+                    <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
+                    
+                    <ul className="space-y-2">
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-2 text-sm">
+                          <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  
-                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
-                  
-                  <ul className="space-y-2">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-sm">
-                        <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -140,36 +146,36 @@ const Services = () => {
       <section className="section-padding bg-muted/30">
         <div className="container container-padding">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 animate-fade-up">
-              How I Work
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 animate-fade-up delay-75">
-              Simple, transparent process
-            </h2>
-            <p className="text-lg text-muted-foreground animate-fade-up delay-150">
-              From idea to launch, here's how we'll work together.
-            </p>
+            <AnimatedSection>
+              <p className="section-label">How I Work</p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <h2 className="mb-4">Simple, transparent process</h2>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <p className="section-description mx-auto">
+                From idea to launch, here's how we'll work together.
+              </p>
+            </AnimatedSection>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto" staggerDelay={0.1}>
             {process.map((item, index) => (
-              <div
-                key={item.step}
-                className="relative bg-card rounded-xl p-6 border border-border animate-fade-up"
-                style={{ animationDelay: `${200 + index * 75}ms` }}
-              >
-                <div className="text-5xl font-bold text-primary/10 mb-4">{item.step}</div>
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                
-                {index < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 text-border">
-                    <ArrowRight className="h-6 w-6" />
-                  </div>
-                )}
-              </div>
+              <StaggerItem key={item.step}>
+                <div className="relative bg-card rounded-xl p-6 border border-border h-full">
+                  <div className="text-5xl font-bold text-primary/10 mb-4">{item.step}</div>
+                  <h4 className="font-semibold mb-2">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  
+                  {index < process.length - 1 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 w-6 text-border">
+                      <ArrowRight className="h-6 w-6" />
+                    </div>
+                  )}
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -177,61 +183,64 @@ const Services = () => {
       <section className="section-padding">
         <div className="container container-padding">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 animate-fade-up">
-              Client Feedback
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 animate-fade-up delay-75">
-              What clients say
-            </h2>
+            <AnimatedSection>
+              <p className="section-label">Client Feedback</p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <h2 className="mb-4">What clients say</h2>
+            </AnimatedSection>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <StaggerContainer className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto" staggerDelay={0.15}>
             {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-card rounded-xl p-8 border border-border animate-fade-up"
-                style={{ animationDelay: `${200 + index * 100}ms` }}
-              >
-                <MessageSquare className="h-8 w-8 text-primary/20 mb-4" />
-                <blockquote className="text-lg mb-6 leading-relaxed">
-                  "{testimonial.quote}"
-                </blockquote>
-                <div>
-                  <div className="font-semibold">{testimonial.author}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+              <StaggerItem key={index}>
+                <div className="bg-card rounded-xl p-8 border border-border h-full">
+                  <MessageSquare className="h-8 w-8 text-primary/20 mb-4" />
+                  <blockquote className="text-lg mb-6 leading-relaxed">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <div>
+                    <div className="font-semibold">{testimonial.author}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
           
-          <p className="text-center text-sm text-muted-foreground mt-8 animate-fade-up delay-300">
-            * Placeholder testimonials - will be updated with real client feedback
-          </p>
+          <AnimatedSection delay={0.4} className="text-center mt-8">
+            <p className="text-sm text-muted-foreground">
+              * Placeholder testimonials - will be updated with real client feedback
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Pricing Note */}
       <section className="pb-20">
         <div className="container container-padding">
-          <div className="max-w-3xl mx-auto text-center bg-primary/5 rounded-2xl p-8 border border-primary/10 animate-fade-up">
-            <Zap className="h-10 w-10 text-primary mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-3">Flexible Pricing</h3>
-            <p className="text-muted-foreground mb-6">
-              Every project is unique. I offer flexible pricing based on scope, complexity, 
-              and timeline. Let's discuss your project and I'll provide a transparent quote.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="h-12 px-8 rounded-lg">
-                <Link to="/contact">
-                  Get a Quote
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              {/* <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
-                <Link to="/pricing">View Product Pricing</Link>
-              </Button> */}
-            </div>
-          </div>
+          <AnimatedSection>
+            <motion.div 
+              className="max-w-3xl mx-auto text-center bg-primary/5 rounded-2xl p-8 border border-primary/10"
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Zap className="h-10 w-10 text-primary mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-3">Flexible Pricing</h3>
+              <p className="text-muted-foreground mb-6">
+                Every project is unique. I offer flexible pricing based on scope, complexity, 
+                and timeline. Let's discuss your project and I'll provide a transparent quote.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button asChild size="lg" className="h-12 px-8 rounded-lg group">
+                  <Link to="/contact">
+                    Get a Quote
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
