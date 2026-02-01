@@ -7,8 +7,8 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { value: "10+", label: "Projects Shipped", icon: Zap },
-  { value: "2+", label: "Years Building", icon: Clock },
+  { value: "24/7", label: "Building Mode", icon: Zap },
+  { value: "2+", label: "Years Learning", icon: Clock },
   { value: "100%", label: "Dedication", icon: Flame },
   { value: "∞", label: "Curiosity", icon: Lightbulb }
 ];
