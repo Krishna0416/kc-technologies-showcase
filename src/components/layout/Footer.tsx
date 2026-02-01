@@ -22,9 +22,8 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Twitter, href: "#", label: "Twitter" },
-                { icon: Github, href: "#", label: "GitHub" }
+                { icon: Linkedin, href: "https://www.linkedin.com/in/krishna-chandak-85294432b", label: "LinkedIn" },
+                { icon: Github, href: "https://github.com/krishnaChandak044", label: "GitHub" }
               ].map((social) => {
                 const Icon = social.icon;
                 return (
@@ -70,8 +69,8 @@ const Footer = () => {
               {[
                 { name: "About", path: "/about" },
                 { name: "Contact", path: "/contact" },
-                { name: "LinkedIn", path: "#" },
-                { name: "Twitter", path: "#" }
+                { name: "LinkedIn", path: "https://www.linkedin.com/in/krishna-chandak-85294432b" },
+                { name: "GitHub", path: "https://github.com/krishnaChandak044" }
               ].map((item) => (
                 item.path.startsWith("/") ? (
                   <Link 
