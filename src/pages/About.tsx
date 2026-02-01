@@ -1,240 +1,175 @@
-import { Target, Eye, Heart, Sparkles, GraduationCap, Rocket, Code, Users, Mail, Linkedin, Twitter, Github } from "lucide-react";
+import { Target, Eye, Zap, Trophy, Clock, Flame, Code2, Lightbulb, Heart, ArrowRight, Quote, Mail, Linkedin, Twitter, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import CTASection from "@/components/sections/CTASection";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
+import { Button } from "@/components/ui/button";
 
-const skills = [
-  "React & TypeScript",
-  "Node.js & APIs",
-  "UI/UX Design",
-  "Product Strategy",
-  "Full-Stack Development",
-  "Cloud & DevOps"
+const stats = [
+  { value: "10+", label: "Projects Shipped", icon: Zap },
+  { value: "2+", label: "Years Building", icon: Clock },
+  { value: "100%", label: "Dedication", icon: Flame },
+  { value: "∞", label: "Curiosity", icon: Lightbulb }
 ];
 
-const values = [
+const principles = [
   {
-    icon: Sparkles,
-    title: "Innovation",
-    description: "I embrace new technologies and creative approaches to solve problems in unique ways."
+    icon: Target,
+    title: "Impact Over Everything",
+    description: "I don't build for the sake of building. Every line of code I write serves a purpose—to solve a real problem for real people."
+  },
+  {
+    icon: Trophy,
+    title: "Relentless Execution",
+    description: "Ideas are easy. Execution is everything. I ship fast, iterate faster, and don't stop until it works perfectly."
   },
   {
     icon: Heart,
-    title: "Quality",
-    description: "Every project I take on gets my full commitment. I believe in doing things right."
+    title: "Obsessive Quality",
+    description: "Good enough isn't good enough. I obsess over the details others overlook because that's where great products are made."
   },
   {
-    icon: Target,
-    title: "Results",
-    description: "I focus on building things that actually work and deliver real value."
-  },
-  {
-    icon: Users,
-    title: "Collaboration",
-    description: "The best products come from great partnerships. I love working with others."
+    icon: Code2,
+    title: "First Principles Thinking",
+    description: "I break down complex problems to their core and rebuild solutions from the ground up. No assumptions, just logic."
   }
 ];
 
-const milestones = [
-  { year: "2022", title: "Started Coding", description: "Fell in love with programming and started building small projects." },
-  { year: "2023", title: "Founded krishbuilds", description: "Decided to formalize my work and build products under my own brand." },
-  { year: "2023", title: "First Client Project", description: "Delivered my first paid project—a custom web application." },
-  { year: "2024", title: "Launched Products", description: "Built and launched my own SaaS products while continuing client work." },
-  { year: "Now", title: "Growing & Learning", description: "Actively building, learning, and looking for exciting collaborations." }
+const journey = [
+  { 
+    year: "2022", 
+    title: "The Spark", 
+    description: "Wrote my first line of code and something clicked. Programming wasn't just logic—it was power to create anything I could imagine.",
+    highlight: true
+  },
+  { 
+    year: "2023", 
+    title: "From Learning to Building", 
+    description: "Stopped doing tutorials. Started building real projects. Failed a lot. Learned even more. Every failure was a lesson that pushed me forward."
+  },
+  { 
+    year: "2023", 
+    title: "First Real Impact", 
+    description: "Delivered my first project that actually helped someone run their business better. That feeling of impact? Addictive.",
+    highlight: true
+  },
+  { 
+    year: "2024", 
+    title: "krishbuilds is Born", 
+    description: "Formalized my work under one brand. Not just a portfolio—a commitment to building products that matter."
+  },
+  { 
+    year: "Now", 
+    title: "Building for Impact", 
+    description: "Every day, I wake up with one goal: ship something that makes a real difference. The journey is just getting started.",
+    highlight: true
+  }
 ];
 
 const About = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-32 pb-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.03] via-transparent to-transparent" />
+      {/* Hero Section - Personal & Impactful */}
+      <section className="relative overflow-hidden pt-32 pb-24">
+        {/* Subtle background elements */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-transparent" />
+        <div className="absolute top-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl opacity-50" />
         
         <div className="container container-padding relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            {/* Left - Photo & Info */}
-            <AnimatedSection direction="left">
-              <div className="relative">
-                {/* Profile placeholder */}
-                <motion.div 
-                  className="w-64 h-64 mx-auto lg:mx-0 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-border flex items-center justify-center"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                      <span className="text-4xl font-bold text-primary">K</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">Your photo here</p>
-                  </div>
-                </motion.div>
-                
-                {/* Floating badges */}
-                <motion.div 
-                  className="absolute -top-2 -right-2 lg:right-auto lg:-left-4 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-xs font-medium flex items-center gap-1.5"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <GraduationCap className="h-3.5 w-3.5" />
-                  Student
-                </motion.div>
-                <motion.div 
-                  className="absolute -bottom-2 right-4 lg:right-auto lg:left-8 px-3 py-1.5 rounded-full bg-card border border-border text-foreground text-xs font-medium flex items-center gap-1.5"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <Rocket className="h-3.5 w-3.5 text-primary" />
-                  Founder
-                </motion.div>
+          <div className="max-w-4xl mx-auto">
+            {/* Intro badge */}
+            <AnimatedSection>
+              <motion.div 
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8"
+                whileHover={{ scale: 1.02 }}
+              >
+                <Flame className="h-4 w-4" />
+                Builder • Creator • Problem Solver
+              </motion.div>
+            </AnimatedSection>
+
+            {/* Main headline */}
+            <AnimatedSection delay={0.1}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+                I build things that
+                <span className="block text-primary">actually matter.</span>
+              </h1>
+            </AnimatedSection>
+
+            {/* Core message */}
+            <AnimatedSection delay={0.2}>
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mb-8">
+                Not just another developer. I'm obsessed with creating software that 
+                solves real problems and makes a tangible impact in people's lives. 
+                When others see obstacles, I see opportunities to build something meaningful.
+              </p>
+            </AnimatedSection>
+
+            {/* Philosophy quote */}
+            <AnimatedSection delay={0.3}>
+              <div className="relative bg-card/50 border border-border rounded-2xl p-8 mb-10">
+                <Quote className="absolute top-4 left-4 h-8 w-8 text-primary/20" />
+                <blockquote className="text-lg italic text-foreground/90 pl-6">
+                  "The world doesn't need more software. It needs more software that 
+                  actually solves problems. That's what I'm here to build."
+                </blockquote>
               </div>
             </AnimatedSection>
 
-            {/* Right - Bio */}
-            <div className="text-center lg:text-left">
-              <AnimatedSection>
-                <p className="section-label">About Me</p>
-              </AnimatedSection>
-              <AnimatedSection delay={0.1}>
-                <h1 className="mb-6">Hey, I'm the founder of krishbuilds</h1>
-              </AnimatedSection>
-              <AnimatedSection delay={0.2}>
-                <div className="space-y-4 text-muted-foreground">
-                  <p className="text-lg">
-                    I'm a student entrepreneur passionate about building software that makes a difference. 
-                    I started krishbuilds to turn my ideas into products and help others do the same.
-                  </p>
-                  <p>
-                    When I'm not coding, I'm learning new technologies, exploring startup ideas, 
-                    and looking for interesting people to collaborate with. I believe great things 
-                    happen when passionate people work together.
-                  </p>
-                </div>
-              </AnimatedSection>
-              
-              {/* Social links */}
-              <AnimatedSection delay={0.3}>
-                <div className="flex gap-3 mt-6 justify-center lg:justify-start">
+            {/* Social links */}
+            <AnimatedSection delay={0.4}>
+              <div className="flex flex-wrap items-center gap-4">
+                <span className="text-sm text-muted-foreground">Connect with me:</span>
+                <div className="flex gap-3">
                   {[
                     { icon: Linkedin, href: "#", label: "LinkedIn" },
                     { icon: Twitter, href: "#", label: "Twitter" },
-                    { icon: Github, href: "#", label: "GitHub" },
-                    { icon: Mail, href: "/contact", label: "Email" }
+                    { icon: Github, href: "#", label: "GitHub" }
                   ].map((social) => {
                     const Icon = social.icon;
-                    const Wrapper = social.href.startsWith("/") ? Link : "a";
                     return (
-                      <motion.div key={social.label} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Wrapper
-                          to={social.href.startsWith("/") ? social.href : undefined}
-                          href={!social.href.startsWith("/") ? social.href : undefined}
-                          className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
-                        >
-                          <Icon className="h-4 w-4" />
-                        </Wrapper>
-                      </motion.div>
+                      <motion.a
+                        key={social.label}
+                        href={social.href}
+                        aria-label={social.label}
+                        className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Icon className="h-4 w-4" />
+                      </motion.a>
                     );
                   })}
                 </div>
-              </AnimatedSection>
-            </div>
+                <Button asChild variant="outline" size="sm" className="ml-2">
+                  <Link to="/contact">
+                    <Mail className="h-4 w-4 mr-2" />
+                    Let's Talk
+                  </Link>
+                </Button>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Stats Section */}
       <section className="pb-20">
         <div className="container container-padding">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <AnimatedSection>
-                <p className="section-label">Skills & Expertise</p>
-              </AnimatedSection>
-              <AnimatedSection delay={0.1}>
-                <h2>What I work with</h2>
-              </AnimatedSection>
-            </div>
-            
-            <StaggerContainer className="flex flex-wrap justify-center gap-3" staggerDelay={0.05}>
-              {skills.map((skill) => (
-                <StaggerItem key={skill}>
-                  <motion.div
-                    className="px-4 py-2 rounded-lg bg-card border border-border text-sm font-medium hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-default"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {skill}
-                  </motion.div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="section-padding bg-muted/30">
-        <div className="container container-padding">
-          <StaggerContainer className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto" staggerDelay={0.15}>
-            <StaggerItem>
-              <div className="bg-card rounded-xl p-8 border border-border h-full">
-                <div className="icon-container icon-container-sm mb-4">
-                  <Target className="h-5 w-5" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">My Mission</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  To build products that solve real problems and help businesses grow, 
-                  while continuously learning and improving my craft.
-                </p>
-              </div>
-            </StaggerItem>
-            <StaggerItem>
-              <div className="bg-card rounded-xl p-8 border border-border h-full">
-                <div className="icon-container icon-container-sm mb-4">
-                  <Eye className="h-5 w-5" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">My Vision</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  To grow krishbuilds into a company known for creating impactful 
-                  products and delivering exceptional value to clients.
-                </p>
-              </div>
-            </StaggerItem>
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="section-padding">
-        <div className="container container-padding">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <AnimatedSection>
-              <p className="section-label">My Values</p>
-            </AnimatedSection>
-            <AnimatedSection delay={0.1}>
-              <h2 className="mb-4">What I believe in</h2>
-            </AnimatedSection>
-            <AnimatedSection delay={0.2}>
-              <p className="section-description mx-auto">
-                The principles that guide everything I do.
-              </p>
-            </AnimatedSection>
-          </div>
-
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto" staggerDelay={0.1}>
-            {values.map((value) => {
-              const Icon = value.icon;
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto" staggerDelay={0.1}>
+            {stats.map((stat) => {
+              const Icon = stat.icon;
               return (
-                <StaggerItem key={value.title}>
-                  <div className="bg-card rounded-xl p-6 border border-border card-interactive h-full">
-                    <div className="icon-container icon-container-sm mb-4">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h4 className="font-semibold mb-2">{value.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-                  </div>
+                <StaggerItem key={stat.label}>
+                  <motion.div 
+                    className="bg-card rounded-xl p-6 border border-border text-center hover:border-primary/30 transition-colors"
+                    whileHover={{ y: -4 }}
+                  >
+                    <Icon className="h-5 w-5 text-primary mx-auto mb-3" />
+                    <div className="text-3xl font-bold text-foreground mb-1">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </motion.div>
                 </StaggerItem>
               );
             })}
@@ -242,37 +177,149 @@ const About = () => {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Mission & Vision - Redesigned */}
+      <section className="section-padding bg-muted/30">
+        <div className="container container-padding">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <AnimatedSection>
+                <p className="section-label">Purpose</p>
+              </AnimatedSection>
+              <AnimatedSection delay={0.1}>
+                <h2>Why I Do This</h2>
+              </AnimatedSection>
+            </div>
+
+            <StaggerContainer className="grid md:grid-cols-2 gap-6" staggerDelay={0.15}>
+              <StaggerItem>
+                <motion.div 
+                  className="bg-card rounded-2xl p-8 border border-border h-full relative overflow-hidden group"
+                  whileHover={{ y: -4 }}
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                      <Target className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4">The Mission</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      To build software that doesn't just exist—but <strong className="text-foreground">transforms</strong>. 
+                      Every project I take on must answer one question: "Will this make someone's life better?"
+                    </p>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+              
+              <StaggerItem>
+                <motion.div 
+                  className="bg-card rounded-2xl p-8 border border-border h-full relative overflow-hidden group"
+                  whileHover={{ y: -4 }}
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                      <Eye className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4">The Vision</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      To prove that you don't need permission to make an impact. 
+                      Age, background, resources—none of it matters when you have 
+                      <strong className="text-foreground"> dedication and a laptop</strong>.
+                    </p>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+            </StaggerContainer>
+          </div>
+        </div>
+      </section>
+
+      {/* Principles Section */}
+      <section className="section-padding">
+        <div className="container container-padding">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <AnimatedSection>
+              <p className="section-label">Philosophy</p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <h2 className="mb-4">How I Operate</h2>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <p className="section-description mx-auto">
+                These aren't just values on a page. They're non-negotiables that drive every decision I make.
+              </p>
+            </AnimatedSection>
+          </div>
+
+          <StaggerContainer className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto" staggerDelay={0.1}>
+            {principles.map((principle) => {
+              const Icon = principle.icon;
+              return (
+                <StaggerItem key={principle.title}>
+                  <motion.div 
+                    className="bg-card rounded-xl p-6 border border-border h-full group hover:border-primary/30 transition-all"
+                    whileHover={{ y: -4 }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">{principle.title}</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{principle.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Journey Timeline - Enhanced */}
       <section className="section-padding bg-muted/30">
         <div className="container container-padding">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <AnimatedSection>
-              <p className="section-label">My Journey</p>
+              <p className="section-label">The Journey</p>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <h2>How I got here</h2>
+              <h2>From Curiosity to Obsession</h2>
             </AnimatedSection>
           </div>
 
           <div className="max-w-2xl mx-auto">
-            {milestones.map((milestone, index) => (
+            {journey.map((item, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="relative flex gap-6 pb-8 last:pb-0">
+                  {/* Timeline connector */}
                   <div className="flex flex-col items-center">
                     <motion.div 
-                      className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold text-sm"
+                      className={`w-16 h-16 rounded-full flex items-center justify-center font-bold text-sm border-2 ${
+                        item.highlight 
+                          ? "bg-primary text-primary-foreground border-primary" 
+                          : "bg-card text-foreground border-border"
+                      }`}
                       whileHover={{ scale: 1.1 }}
                     >
-                      {milestone.year}
+                      {item.year}
                     </motion.div>
-                    {index < milestones.length - 1 && (
-                      <div className="w-px h-full bg-border mt-2" />
+                    {index < journey.length - 1 && (
+                      <div className="w-0.5 h-full bg-border mt-3" />
                     )}
                   </div>
-                  <div className="bg-card rounded-xl p-6 border border-border flex-1">
-                    <h4 className="font-semibold mb-1">{milestone.title}</h4>
-                    <p className="text-sm text-muted-foreground">{milestone.description}</p>
-                  </div>
+                  
+                  {/* Content */}
+                  <motion.div 
+                    className={`bg-card rounded-xl p-6 border flex-1 ${
+                      item.highlight ? "border-primary/30" : "border-border"
+                    }`}
+                    whileHover={{ x: 4 }}
+                  >
+                    <h4 className="font-semibold mb-2 text-lg">{item.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                  </motion.div>
                 </div>
               </AnimatedSection>
             ))}
@@ -280,11 +327,55 @@ const About = () => {
         </div>
       </section>
 
+      {/* What Sets Me Apart */}
+      <section className="section-padding">
+        <div className="container container-padding">
+          <div className="max-w-4xl mx-auto">
+            <AnimatedSection>
+              <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-2xl p-8 md:p-12 border border-primary/20">
+                <h3 className="text-2xl font-bold mb-6">What Makes Me Different?</h3>
+                <div className="grid md:grid-cols-2 gap-6 text-muted-foreground">
+                  <div className="space-y-4">
+                    <p>
+                      <strong className="text-foreground">I'm not just writing code—I'm solving problems.</strong> Every 
+                      project starts with understanding the "why" before the "how."
+                    </p>
+                    <p>
+                      <strong className="text-foreground">I ship.</strong> While others are stuck in planning paralysis, 
+                      I believe in building, testing, and iterating. Done is better than perfect.
+                    </p>
+                  </div>
+                  <div className="space-y-4">
+                    <p>
+                      <strong className="text-foreground">I care obsessively.</strong> Your project isn't just another 
+                      item on my list. It's something I'll think about at 2 AM.
+                    </p>
+                    <p>
+                      <strong className="text-foreground">I'm hungry.</strong> Not content with "good enough." 
+                      Every day is a chance to build something better than yesterday.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-primary/20">
+                  <Button asChild size="lg" className="group">
+                    <Link to="/products">
+                      See What I've Built
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       <CTASection
-        title="Want to work together?"
-        description="I'm always open to interesting projects, collaborations, and new opportunities."
-        primaryAction={{ text: "Get in Touch", href: "/contact" }}
-        secondaryAction={{ text: "View My Work", href: "/products" }}
+        title="Ready to build something impactful?"
+        description="Whether it's a product idea, a collaboration, or just a conversation—I'm always excited to connect with people who want to make things happen."
+        primaryAction={{ text: "Let's Talk", href: "/contact" }}
+        secondaryAction={{ text: "View Services", href: "/services" }}
       />
     </Layout>
   );
