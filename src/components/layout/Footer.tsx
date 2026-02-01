@@ -47,8 +47,8 @@ const Footer = () => {
               {[
                 { name: "Products", path: "/products" },
                 { name: "Services", path: "/services" },
-                { name: "Case Studies", path: "/case-studies" },
-                { name: "Pricing", path: "/pricing" }
+                { name: "Case Studies", path: "/case-studies" }
+                // { name: "Pricing", path: "/pricing" } // Commented out - will enable later
               ].map((item) => (
                 <Link 
                   key={item.name}
