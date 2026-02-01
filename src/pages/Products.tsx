@@ -60,33 +60,9 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Services CTA */}
-      <section className="pb-20">
-        <div className="container container-padding">
-          <div className="max-w-4xl mx-auto bg-muted/30 rounded-2xl p-8 md:p-12 border border-border text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Have a project idea?</h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Beyond my own products, I also work on client projects. If you have an idea 
-              you want to bring to life, let's talk about how I can help.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="h-12 px-8 rounded-lg">
-                <Link to="/services">
-                  View Services
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
-                <Link to="/contact">Get in Touch</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <CTASection 
         title="Want to collaborate?"
-        description="I'm always open to interesting projects and partnerships."
+        description="I'm always open to interesting projects and partnerships. Let's build something great together."
         primaryAction={{ text: "Let's Talk", href: "/contact" }}
         secondaryAction={{ text: "View Services", href: "/services" }}
       />
