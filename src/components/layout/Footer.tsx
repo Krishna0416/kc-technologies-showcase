@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Github, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -10,8 +11,8 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="col-span-2 lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
+            <Link to="/" className="flex items-center gap-2.5 group">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary transition-transform group-hover:scale-105">
                 <span className="text-sm font-bold text-white">kb</span>
               </div>
               <span className="text-lg font-semibold">krishbuilds</span>
@@ -27,14 +28,16 @@ const Footer = () => {
               ].map((social) => {
                 const Icon = social.icon;
                 return (
-                  <a 
+                  <motion.a 
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
                     className="w-9 h-9 rounded-lg bg-background/10 flex items-center justify-center text-background/60 hover:bg-primary hover:text-white transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <Icon className="h-4 w-4" />
-                  </a>
+                  </motion.a>
                 );
               })}
             </div>
@@ -48,7 +51,6 @@ const Footer = () => {
                 { name: "Products", path: "/products" },
                 { name: "Services", path: "/services" },
                 { name: "Case Studies", path: "/case-studies" }
-                // { name: "Pricing", path: "/pricing" } // Commented out - will enable later
               ].map((item) => (
                 <Link 
                   key={item.name}
@@ -102,7 +104,7 @@ const Footer = () => {
               <Input
                 type="email"
                 placeholder="Email"
-                className="bg-background/10 border-background/20 text-background placeholder:text-background/50 h-9 text-sm"
+                className="bg-background/10 border-background/20 text-background placeholder:text-background/50 h-9 text-sm focus:border-primary"
               />
               <Button type="submit" size="sm" className="h-9 px-4">
                 Subscribe

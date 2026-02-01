@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ProductCard from "@/components/cards/ProductCard";
 import CTASection from "@/components/sections/CTASection";
 import { products } from "@/data/products";
 import { Button } from "@/components/ui/button";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 const Products = () => {
   return (
@@ -15,25 +17,29 @@ const Products = () => {
         
         <div className="container container-padding relative">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 animate-fade-up">
-              My Products
-            </p>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6 animate-fade-up delay-75">
-              Software I've built
-            </h1>
-            <p className="text-lg text-muted-foreground animate-fade-up delay-150 max-w-2xl">
-              These are the products I've created under KC Technologies. Each one solves 
-              a real problem and is built with care and attention to detail.
-            </p>
+            <AnimatedSection>
+              <p className="section-label">My Products</p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+              <h1 className="mb-6">Software I've built</h1>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <p className="section-description">
+                These are the products I've created under krishbuilds. Each one solves 
+                a real problem and is built with care and attention to detail.
+              </p>
+            </AnimatedSection>
             
-            <div className="flex gap-4 mt-8 animate-fade-up delay-200">
-              <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg">
-                <Link to="/services">
-                  Need something custom?
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+            <AnimatedSection delay={0.3}>
+              <div className="flex gap-4 mt-8">
+                <Button asChild variant="outline" size="lg" className="h-12 px-8 rounded-lg group">
+                  <Link to="/services">
+                    Need something custom?
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -48,15 +54,18 @@ const Products = () => {
           </div>
 
           {/* Coming Soon */}
-          <div className="mt-16 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border text-sm font-medium text-muted-foreground">
+          <AnimatedSection delay={0.5} className="mt-16 text-center">
+            <motion.div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border text-sm font-medium text-muted-foreground"
+              whileHover={{ scale: 1.02 }}
+            >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
               More products in development
-            </div>
-          </div>
+            </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 

@@ -1,5 +1,5 @@
 import { Lightbulb, Shield, Users, Rocket } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 
 const values = [
   {
@@ -30,47 +30,41 @@ const WhyChooseUs = () => {
       <div className="container container-padding">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 animate-fade-up">
-            Why KC Technologies
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 animate-fade-up delay-75">
-            Built for success
-          </h2>
-          <p className="text-lg text-muted-foreground animate-fade-up delay-150">
-            We're not just building software—we're building partnerships that drive results.
-          </p>
+          <AnimatedSection>
+            <p className="section-label">Why krishbuilds</p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.1}>
+            <h2 className="mb-4">Built for success</h2>
+          </AnimatedSection>
+          <AnimatedSection delay={0.2}>
+            <p className="section-description mx-auto">
+              We're not just building software—we're building partnerships that drive results.
+            </p>
+          </AnimatedSection>
         </div>
 
         {/* Values Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {values.map((value, index) => {
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto" staggerDelay={0.1}>
+          {values.map((value) => {
             const Icon = value.icon;
             return (
-              <div
-                key={value.title}
-                className={cn(
-                  "relative p-6 rounded-xl bg-card border border-border",
-                  "hover-lift transition-all duration-300",
-                  "animate-fade-up"
-                )}
-                style={{ animationDelay: `${200 + index * 75}ms` }}
-              >
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary mb-4">
-                  <Icon className="h-5 w-5" />
-                </div>
+              <StaggerItem key={value.title}>
+                <div className="relative p-6 rounded-xl bg-card border border-border card-interactive h-full">
+                  {/* Icon */}
+                  <div className="icon-container icon-container-sm mb-4">
+                    <Icon className="h-5 w-5" />
+                  </div>
 
-                {/* Content */}
-                <h3 className="text-base font-semibold mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {value.description}
-                </p>
-              </div>
+                  {/* Content */}
+                  <h4 className="font-semibold mb-2">{value.title}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

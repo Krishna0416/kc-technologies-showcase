@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { products } from "@/data/products";
-import { cn } from "@/lib/utils";
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 
 const ProductShowcase = () => {
   return (
@@ -9,80 +10,78 @@ const ProductShowcase = () => {
       <div className="container container-padding">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3 animate-fade-up">
-            Our Products
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 animate-fade-up delay-75">
-            Built for modern teams
-          </h2>
-          <p className="text-lg text-muted-foreground animate-fade-up delay-150">
-            Powerful tools designed to help your business thrive.
-          </p>
+          <AnimatedSection>
+            <p className="section-label">Our Products</p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.1}>
+            <h2 className="mb-4">Built for modern teams</h2>
+          </AnimatedSection>
+          <AnimatedSection delay={0.2}>
+            <p className="section-description mx-auto">
+              Powerful tools designed to help your business thrive.
+            </p>
+          </AnimatedSection>
         </div>
 
         {/* Product Cards */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {products.map((product, index) => {
+        <StaggerContainer className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto" staggerDelay={0.15}>
+          {products.map((product) => {
             const Icon = product.icon;
             return (
-              <Link
-                key={product.id}
-                to={`/products/${product.id}`}
-                className={cn(
-                  "group relative bg-card rounded-xl p-8 border border-border",
-                  "hover-lift transition-all duration-300",
-                  "animate-fade-up"
-                )}
-                style={{ animationDelay: `${200 + index * 100}ms` }}
-              >
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-5">
-                  <Icon className="h-6 w-6" />
-                </div>
+              <StaggerItem key={product.id}>
+                <Link
+                  to={`/products/${product.id}`}
+                  className="group relative bg-card rounded-xl p-8 border border-border card-interactive block h-full"
+                >
+                  {/* Icon */}
+                  <div className="icon-container icon-container-md mb-5">
+                    <Icon className="h-6 w-6" />
+                  </div>
 
-                {/* Content */}
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {product.name}
-                </h3>
-                <p className="text-sm font-medium text-primary mb-3">
-                  {product.tagline}
-                </p>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {product.description}
-                </p>
+                  {/* Content */}
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {product.name}
+                  </h3>
+                  <p className="text-sm font-medium text-primary mb-3">
+                    {product.tagline}
+                  </p>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {product.description}
+                  </p>
 
-                {/* Features preview */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {product.benefits.slice(0, 3).map((benefit, i) => (
-                    <span 
-                      key={i}
-                      className="px-2.5 py-1 rounded-md bg-muted text-muted-foreground text-xs font-medium"
-                    >
-                      {benefit}
-                    </span>
-                  ))}
-                </div>
+                  {/* Features preview */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {product.benefits.slice(0, 3).map((benefit, i) => (
+                      <span 
+                        key={i}
+                        className="px-2.5 py-1 rounded-md bg-muted text-muted-foreground text-xs font-medium"
+                      >
+                        {benefit}
+                      </span>
+                    ))}
+                  </div>
 
-                {/* Link */}
-                <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                  Learn more
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
+                  {/* Link */}
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                    Learn more
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
 
         {/* View All */}
-        <div className="text-center mt-12 animate-fade-up delay-400">
+        <AnimatedSection delay={0.5} className="text-center mt-12">
           <Link
             to="/products"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary link-underline"
           >
             View all products
             <ArrowRight className="h-4 w-4" />
           </Link>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
