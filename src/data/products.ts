@@ -28,7 +28,7 @@ export const products: Product[] = [
     longDescription: "Orderly is an end-to-end order and inventory management solution designed for modern distribution businesses. It connects your entire supply chain—from warehouse managers to field sales representatives to delivery drivers—through a unified, real-time platform that eliminates manual errors and accelerates order fulfillment.",
     icon: Package,
     color: "from-blue-500 to-indigo-500",
-    status: "launching-soon",
+    status: "available",
     features: [
       {
         icon: Monitor,
@@ -67,7 +67,7 @@ export const products: Product[] = [
     longDescription: "DilCare bridges the gap between busy adult children and their aging parents living alone. Built on React Native for high performance, it replaces complex health apps with voice-first interactions and emotionally intuitive design, making technology feel supportive rather than intimidating.",
     icon: Heart,
     color: "from-rose-500 to-pink-500",
-    status: "launching-soon",
+    status: "available",
     features: [
       {
         icon: Brain,
